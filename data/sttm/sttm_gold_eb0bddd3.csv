@@ -1,0 +1,12 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+silver,,,gold,gold_top_selling_products,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales_data_silver,product_id,gold,gold_top_selling_products,product_id,Direct,Passthrough
+silver,sales_data_silver,product_name,gold,gold_top_selling_products,product_name,Direct,Passthrough
+silver,sales_data_silver,category,gold,gold_top_selling_products,product_category,Direct,Passthrough
+silver,sales_data_silver,quantity,gold,gold_top_selling_products,quantity_sold,Direct,Passthrough
+silver,sales_data_silver,unit_price,gold,gold_top_selling_products,transaction_unit_price,Direct,Passthrough
+silver,sales_data_silver,total_amount,gold,gold_top_selling_products,total_transaction_amount,Direct,Passthrough
+silver,products_silver,standard_price,gold,gold_top_selling_products,product_standard_price,Direct,Passthrough
+silver,sales_data_silver,_load_timestamp,gold,gold_top_selling_products,sales_load_timestamp,Direct,Passthrough
+silver,sales_data_silver,_source_file,gold,gold_top_selling_products,sales_source_file,Direct,Passthrough
+silver,sales_data_silver,product_id,gold,gold_top_selling_products,product_id,Join,Left join sales_data_silver on product_id with products_silver on product_id to enrich sales transaction data with product master details like standard price.

@@ -1,0 +1,30 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+bronze,products_bronze,,silver,products_silver,pk_products_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,products_bronze,product_id,silver,products_silver,product_id,Direct,CAST(product_id AS INT)
+bronze,products_bronze,product_name,silver,products_silver,product_name,Direct,"NULLIF(TRIM(product_name), '')"
+bronze,products_bronze,category,silver,products_silver,category,Direct,"NULLIF(TRIM(category), '')"
+bronze,products_bronze,standard_price,silver,products_silver,standard_price,Direct,"COALESCE(CAST(standard_price AS DECIMAL(10, 2)), 0.00)"
+bronze,products_bronze,_load_timestamp,silver,products_silver,_load_timestamp,Direct,CAST(_load_timestamp AS TIMESTAMP_NTZ)
+bronze,products_bronze,_source_file,silver,products_silver,_source_file,Direct,"NULLIF(TRIM(_source_file), '')"
+bronze,sales_data_bronze,,silver,sales_silver,pk_sales_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,sales_data_bronze,transaction_id,silver,sales_silver,transaction_id,Direct,CAST(transaction_id AS INT)
+bronze,sales_data_bronze,transaction_date,silver,sales_silver,transaction_date,Direct,TRY_CAST(transaction_date AS DATE)
+bronze,sales_data_bronze,store_id,silver,sales_silver,store_id,Direct,CAST(store_id AS INT)
+bronze,sales_data_bronze,product_id,silver,sales_silver,product_id,Direct,CAST(product_id AS INT)
+bronze,sales_data_bronze,product_name,silver,sales_silver,product_name,Direct,"NULLIF(TRIM(product_name), '')"
+bronze,sales_data_bronze,category,silver,sales_silver,category,Direct,"NULLIF(TRIM(category), '')"
+bronze,sales_data_bronze,quantity,silver,sales_silver,quantity,Direct,"COALESCE(CAST(quantity AS INT), 0)"
+bronze,sales_data_bronze,unit_price,silver,sales_silver,unit_price,Direct,"COALESCE(CAST(unit_price AS DECIMAL(10, 2)), 0.00)"
+bronze,sales_data_bronze,total_amount,silver,sales_silver,total_amount,Direct,"COALESCE(CAST(total_amount AS DECIMAL(10, 2)), 0.00)"
+bronze,sales_data_bronze,customer_segment,silver,sales_silver,customer_segment,Direct,"NULLIF(TRIM(customer_segment), '')"
+bronze,sales_data_bronze,payment_method,silver,sales_silver,payment_method,Direct,"NULLIF(TRIM(payment_method), '')"
+bronze,sales_data_bronze,_load_timestamp,silver,sales_silver,_load_timestamp,Direct,CAST(_load_timestamp AS TIMESTAMP_NTZ)
+bronze,sales_data_bronze,_source_file,silver,sales_silver,_source_file,Direct,"NULLIF(TRIM(_source_file), '')"
+bronze,stores_bronze,,silver,stores_silver,pk_stores_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,stores_bronze,store_id,silver,stores_silver,store_id,Direct,CAST(store_id AS INT)
+bronze,stores_bronze,store_name,silver,stores_silver,store_name,Direct,"NULLIF(TRIM(store_name), '')"
+bronze,stores_bronze,region,silver,stores_silver,region,Direct,"NULLIF(TRIM(region), '')"
+bronze,stores_bronze,city,silver,stores_silver,city,Direct,"NULLIF(TRIM(city), '')"
+bronze,stores_bronze,state,silver,stores_silver,state,Direct,"NULLIF(TRIM(state), '')"
+bronze,stores_bronze,_load_timestamp,silver,stores_silver,_load_timestamp,Direct,CAST(_load_timestamp AS TIMESTAMP_NTZ)
+bronze,stores_bronze,_source_file,silver,stores_silver,_source_file,Direct,"NULLIF(TRIM(_source_file), '')"

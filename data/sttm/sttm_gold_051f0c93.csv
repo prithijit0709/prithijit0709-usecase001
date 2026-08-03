@@ -1,0 +1,25 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+,,,Gold,fact_sales,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+Silver,sales_data_silver,product_id,Gold,fact_sales,product_id,Join,Join sales_data_silver.product_id = products_silver.product_id
+Silver,sales_data_silver,store_id,Gold,fact_sales,store_id,Join,Join sales_data_silver.store_id = stores_silver.store_id
+Silver,sales_data_silver,transaction_id,Gold,fact_sales,transaction_id,Direct,Passthrough
+Silver,sales_data_silver,transaction_date,Gold,fact_sales,transaction_date,Direct,Passthrough
+Silver,sales_data_silver,quantity,Gold,fact_sales,quantity,Direct,Passthrough
+Silver,sales_data_silver,unit_price,Gold,fact_sales,unit_price,Direct,Passthrough
+Silver,sales_data_silver,total_amount,Gold,fact_sales,total_amount,Direct,Passthrough
+Silver,sales_data_silver,customer_segment,Gold,fact_sales,customer_segment,Direct,Passthrough
+Silver,sales_data_silver,payment_method,Gold,fact_sales,payment_method,Direct,Passthrough
+Silver,sales_data_silver,load_timestamp,Gold,fact_sales,sales_load_timestamp,Indirect,Rename column to avoid conflict with other source timestamps
+Silver,sales_data_silver,source_file,Gold,fact_sales,sales_source_file,Indirect,Rename column to avoid conflict with other source files
+Silver,sales_data_silver,quantity,Gold,fact_sales,is_return,Indirect,CASE WHEN quantity < 0 THEN TRUE ELSE FALSE END
+Silver,products_silver,product_name,Gold,fact_sales,product_name,Indirect,Prefer product_name from products_silver due to potential redundancy in sales_data_silver
+Silver,products_silver,category,Gold,fact_sales,category,Indirect,Prefer category from products_silver due to potential redundancy in sales_data_silver
+Silver,products_silver,standard_price,Gold,fact_sales,standard_price,Direct,Passthrough
+Silver,products_silver,load_timestamp,Gold,fact_sales,product_load_timestamp,Indirect,Rename column to avoid conflict with other source timestamps
+Silver,products_silver,source_file,Gold,fact_sales,product_source_file,Indirect,Rename column to avoid conflict with other source files
+Silver,stores_silver,store_name,Gold,fact_sales,store_name,Direct,Passthrough
+Silver,stores_silver,region,Gold,fact_sales,region,Direct,Passthrough
+Silver,stores_silver,city,Gold,fact_sales,city,Direct,Passthrough
+Silver,stores_silver,state,Gold,fact_sales,state,Direct,Passthrough
+Silver,stores_silver,load_timestamp,Gold,fact_sales,store_load_timestamp,Indirect,Rename column to avoid conflict with other source timestamps
+Silver,stores_silver,source_file,Gold,fact_sales,store_source_file,Indirect,Rename column to avoid conflict with other source files

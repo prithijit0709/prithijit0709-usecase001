@@ -1,0 +1,15 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+,,,gold,gold_product_sales_detail,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales_data_silver.parquet,transaction_id,gold,gold_product_sales_detail,transaction_id,Direct,Passthrough
+silver,sales_data_silver.parquet,transaction_date,gold,gold_product_sales_detail,transaction_date,Direct,Passthrough
+silver,sales_data_silver.parquet,store_id,gold,gold_product_sales_detail,store_id,Direct,Passthrough
+silver,sales_data_silver.parquet,product_id,gold,gold_product_sales_detail,product_id,Direct,Passthrough
+silver,products_silver.parquet,product_name,gold,gold_product_sales_detail,product_name,Direct,Passthrough (Master product name from product dimension)
+silver,products_silver.parquet,category,gold,gold_product_sales_detail,category,Direct,Passthrough (Master product category from product dimension)
+silver,products_silver.parquet,standard_price,gold,gold_product_sales_detail,standard_price,Direct,Passthrough (Standard list price of the product)
+silver,sales_data_silver.parquet,quantity,gold,gold_product_sales_detail,sales_quantity,Indirect,"Renamed for clarity, represents quantity sold in a transaction"
+silver,sales_data_silver.parquet,unit_price,gold,gold_product_sales_detail,sales_unit_price,Indirect,"Renamed for clarity, represents unit price at the time of sale"
+silver,sales_data_silver.parquet,total_amount,gold,gold_product_sales_detail,sales_total_amount,Indirect,"Renamed for clarity, represents total amount for the product in the transaction"
+silver,sales_data_silver.parquet,customer_segment,gold,gold_product_sales_detail,customer_segment,Direct,Passthrough
+silver,sales_data_silver.parquet,payment_method,gold,gold_product_sales_detail,payment_method,Direct,Passthrough
+silver,sales_data_silver.parquet,product_id,silver,products_silver.parquet,product_id,Indirect,Join key for products_silver and sales_data_silver to enrich sales data with product details

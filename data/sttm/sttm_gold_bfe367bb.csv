@@ -1,0 +1,20 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+,,,gold,gold_product_sales,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales_data_silver,product_id,silver,products_silver,product_id,Join,Inner Join on sales_data_silver.product_id = products_silver.product_id
+silver,sales_data_silver,store_id,silver,stores_silver,store_id,Join,Inner Join on sales_data_silver.store_id = stores_silver.store_id
+silver,products_silver,product_id,gold,gold_product_sales,product_id,Direct,Passthrough
+silver,products_silver,product_name,gold,gold_product_sales,product_name,Direct,Passthrough
+silver,products_silver,category,gold,gold_product_sales,product_category,Indirect,Rename category to product_category
+silver,products_silver,standard_price,gold,gold_product_sales,standard_product_price,Indirect,Rename standard_price to standard_product_price
+silver,sales_data_silver,transaction_id,gold,gold_product_sales,transaction_id,Direct,Passthrough
+silver,sales_data_silver,transaction_date,gold,gold_product_sales,transaction_date,Direct,Passthrough
+silver,sales_data_silver,store_id,gold,gold_product_sales,store_id,Direct,Passthrough
+silver,sales_data_silver,quantity,gold,gold_product_sales,sales_quantity,Indirect,Rename quantity to sales_quantity; includes both sales and returns (negative quantity)
+silver,sales_data_silver,unit_price,gold,gold_product_sales,unit_sale_price,Indirect,Rename unit_price to unit_sale_price
+silver,sales_data_silver,total_amount,gold,gold_product_sales,total_sale_amount,Indirect,Rename total_amount to total_sale_amount
+silver,sales_data_silver,customer_segment,gold,gold_product_sales,customer_segment,Direct,Passthrough
+silver,sales_data_silver,payment_method,gold,gold_product_sales,payment_method,Direct,Passthrough
+silver,stores_silver,store_name,gold,gold_product_sales,store_name,Direct,Passthrough
+silver,stores_silver,region,gold,gold_product_sales,store_region,Indirect,Rename region to store_region
+silver,stores_silver,city,gold,gold_product_sales,store_city,Indirect,Rename city to store_city
+silver,stores_silver,state,gold,gold_product_sales,store_state,Indirect,Rename state to store_state

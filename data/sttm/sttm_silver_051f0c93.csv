@@ -1,0 +1,30 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+,products_bronze.parquet,,silver,products_silver,pk_products_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,products_bronze.parquet,product_id,silver,products_silver,product_id,Direct,CAST(product_id AS VARCHAR)
+bronze,products_bronze.parquet,product_name,silver,products_silver,product_name,Direct,"COALESCE(CAST(product_name AS VARCHAR), 'Unknown Product')"
+bronze,products_bronze.parquet,category,silver,products_silver,category,Direct,"COALESCE(CAST(category AS VARCHAR), 'Uncategorized')"
+bronze,products_bronze.parquet,standard_price,silver,products_silver,standard_price,Direct,"COALESCE(CAST(standard_price AS DECIMAL(10, 2)), 0.00)"
+bronze,products_bronze.parquet,_load_timestamp,silver,products_silver,load_timestamp,Direct,"COALESCE(CAST(_load_timestamp AS TIMESTAMP), '1900-01-01 00:00:00')"
+bronze,products_bronze.parquet,_source_file,silver,products_silver,source_file,Direct,"COALESCE(CAST(_source_file AS VARCHAR), 'Unknown Source File')"
+,sales_data_bronze.parquet,,silver,sales_silver,pk_sales_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,sales_data_bronze.parquet,transaction_id,silver,sales_silver,transaction_id,Direct,CAST(transaction_id AS VARCHAR)
+bronze,sales_data_bronze.parquet,transaction_date,silver,sales_silver,transaction_date,Direct,"COALESCE(TRY_CAST(transaction_date AS DATE), '1900-01-01')"
+bronze,sales_data_bronze.parquet,store_id,silver,sales_silver,store_id,Direct,CAST(store_id AS VARCHAR)
+bronze,sales_data_bronze.parquet,product_id,silver,sales_silver,product_id,Direct,CAST(product_id AS VARCHAR)
+bronze,sales_data_bronze.parquet,product_name,silver,sales_silver,product_name,Direct,"COALESCE(CAST(product_name AS VARCHAR), 'Unknown Product')"
+bronze,sales_data_bronze.parquet,category,silver,sales_silver,category,Direct,"COALESCE(CAST(category AS VARCHAR), 'Uncategorized')"
+bronze,sales_data_bronze.parquet,quantity,silver,sales_silver,quantity,Direct,"COALESCE(CAST(quantity AS INT), 0)"
+bronze,sales_data_bronze.parquet,unit_price,silver,sales_silver,unit_price,Direct,"COALESCE(CAST(unit_price AS DECIMAL(10, 2)), 0.00)"
+bronze,sales_data_bronze.parquet,total_amount,silver,sales_silver,total_amount,Direct,"COALESCE(CAST(total_amount AS DECIMAL(10, 2)), 0.00)"
+bronze,sales_data_bronze.parquet,customer_segment,silver,sales_silver,customer_segment,Direct,"COALESCE(CAST(customer_segment AS VARCHAR), 'Unknown Segment')"
+bronze,sales_data_bronze.parquet,payment_method,silver,sales_silver,payment_method,Direct,"COALESCE(CAST(payment_method AS VARCHAR), 'Unknown Payment Method')"
+bronze,sales_data_bronze.parquet,_load_timestamp,silver,sales_silver,load_timestamp,Direct,"COALESCE(CAST(_load_timestamp AS TIMESTAMP), '1900-01-01 00:00:00')"
+bronze,sales_data_bronze.parquet,_source_file,silver,sales_silver,source_file,Direct,"COALESCE(CAST(_source_file AS VARCHAR), 'Unknown Source File')"
+,stores_bronze.parquet,,silver,stores_silver,pk_stores_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+bronze,stores_bronze.parquet,store_id,silver,stores_silver,store_id,Direct,CAST(store_id AS VARCHAR)
+bronze,stores_bronze.parquet,store_name,silver,stores_silver,store_name,Direct,"COALESCE(CAST(store_name AS VARCHAR), 'Unknown Store')"
+bronze,stores_bronze.parquet,region,silver,stores_silver,region,Direct,"COALESCE(CAST(region AS VARCHAR), 'Unknown Region')"
+bronze,stores_bronze.parquet,city,silver,stores_silver,city,Direct,"COALESCE(CAST(city AS VARCHAR), 'Unknown City')"
+bronze,stores_bronze.parquet,state,silver,stores_silver,state,Direct,"COALESCE(CAST(state AS VARCHAR), 'Unknown State')"
+bronze,stores_bronze.parquet,_load_timestamp,silver,stores_silver,load_timestamp,Direct,"COALESCE(CAST(_load_timestamp AS TIMESTAMP), '1900-01-01 00:00:00')"
+bronze,stores_bronze.parquet,_source_file,silver,stores_silver,source_file,Direct,"COALESCE(CAST(_source_file AS VARCHAR), 'Unknown Source File')"

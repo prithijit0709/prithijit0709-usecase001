@@ -1,0 +1,10 @@
+{
+  "direct_answer": {
+    "question": "We want the analysis on given data of following:\n1. Top 3 selling Product\n2. Top 2 selling stores\n3. Total sales\n4. number of products and stores  we have\n5. other relevant KPI",
+    "answer": "Analysis could not be structured.",
+    "why": "Agent response did not contain a parseable JSON object.",
+    "approach": "N/A"
+  },
+  "charts": [],
+  "detailed_analysis": "No structured analysis available."
+}

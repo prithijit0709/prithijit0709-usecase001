@@ -1,0 +1,21 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+landing,products,product_id,bronze,bronze_products,product_id,Direct Map,product_id
+landing,products,product_name,bronze,bronze_products,product_name,Direct Map,product_name
+landing,products,category,bronze,bronze_products,category,Direct Map,category
+landing,products,standard_price,bronze,bronze_products,standard_price,Direct Map,standard_price
+landing,sales_data,transaction_id,bronze,bronze_sales_data,transaction_id,Direct Map,transaction_id
+landing,sales_data,transaction_date,bronze,bronze_sales_data,transaction_date,Direct Map,transaction_date
+landing,sales_data,store_id,bronze,bronze_sales_data,store_id,Direct Map,store_id
+landing,sales_data,product_id,bronze,bronze_sales_data,product_id,Direct Map,product_id
+landing,sales_data,product_name,bronze,bronze_sales_data,product_name,Direct Map,product_name
+landing,sales_data,category,bronze,bronze_sales_data,category,Direct Map,category
+landing,sales_data,quantity,bronze,bronze_sales_data,quantity,Direct Map,quantity
+landing,sales_data,unit_price,bronze,bronze_sales_data,unit_price,Direct Map,unit_price
+landing,sales_data,total_amount,bronze,bronze_sales_data,total_amount,Direct Map,total_amount
+landing,sales_data,customer_segment,bronze,bronze_sales_data,customer_segment,Direct Map,customer_segment
+landing,sales_data,payment_method,bronze,bronze_sales_data,payment_method,Direct Map,payment_method
+landing,stores,store_id,bronze,bronze_stores,store_id,Direct Map,store_id
+landing,stores,store_name,bronze,bronze_stores,store_name,Direct Map,store_name
+landing,stores,region,bronze,bronze_stores,region,Direct Map,region
+landing,stores,city,bronze,bronze_stores,city,Direct Map,city
+landing,stores,state,bronze,bronze_stores,state,Direct Map,state

@@ -1,0 +1,18 @@
+{
+  "direct_answer": {
+    "question": "Top two selling product?",
+    "answer": "Query returned 2 rows. Top result \u2014 product_name: iPhone 15, total_revenue: 63489.130000000005.",
+    "why": "Based on SQL query results with columns: product_name, total_revenue",
+    "approach": "\nSELECT\n  product_name,\n  SUM(total_transaction_amount) AS total_revenue\nFROM gold_top_selling_products\nGROUP BY\n  product_name\nORDER BY\n  total_revenue DESC\nLIMIT 2;\n"
+  },
+  "charts": [
+    {
+      "type": "bar",
+      "title": "total_revenue by product_name",
+      "x_column": "product_name",
+      "y_column": "total_revenue",
+      "reason": "Auto-generated from query results"
+    }
+  ],
+  "detailed_analysis": "The analysis returned 2 rows. Columns available: product_name, total_revenue. Top 3 results: [{'product_name': 'iPhone 15', 'total_revenue': 63489.130000000005}, {'product_name': 'Samsung Galaxy S24', 'total_revenue': 52083.350000000006}]"
+}

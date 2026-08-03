@@ -1,0 +1,10 @@
+{
+  "direct_answer": {
+    "question": "Profile 3 CSVs: products (20 rows: product_id, product_name, category, standard_price), stores (10 rows: store_id, store_name, region, city, state), sales_data (186 rows: transaction_id, transaction_date, store_id, product_id, product_name, category, quantity, unit_price, total_amount, customer_segment, payment_method). Join keys: sales_data.store_id \u2192 stores.store_id, sales_data.product_id \u2192 products.product_id. Known issues: mixed date formats in transaction_date (MM/DD/YYYY and YYYY-MM-DD), negative quantity/total_amount = returns (prefix RET), duplicate product_name/category columns in sales_data (already in products)",
+    "answer": "Analysis could not be structured.",
+    "why": "Agent response did not contain a parseable JSON object.",
+    "approach": "N/A"
+  },
+  "charts": [],
+  "detailed_analysis": "No structured analysis available."
+}

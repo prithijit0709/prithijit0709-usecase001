@@ -1,0 +1,20 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+silver,,,gold,gold_sales_facts,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales_data_silver,transaction_id,gold,gold_sales_facts,transaction_id,Direct,Passthrough
+silver,sales_data_silver,transaction_date,gold,gold_sales_facts,transaction_date,Direct,Passthrough
+silver,sales_data_silver,store_id,gold,gold_sales_facts,store_id,Direct,Passthrough
+silver,stores_silver,store_name,gold,gold_sales_facts,store_name,Indirect,Join on sales_data_silver.store_id = stores_silver.store_id
+silver,stores_silver,region,gold,gold_sales_facts,store_region,Indirect,Join on sales_data_silver.store_id = stores_silver.store_id
+silver,stores_silver,city,gold,gold_sales_facts,store_city,Indirect,Join on sales_data_silver.store_id = stores_silver.store_id
+silver,stores_silver,state,gold,gold_sales_facts,store_state,Indirect,Join on sales_data_silver.store_id = stores_silver.store_id
+silver,sales_data_silver,product_id,gold,gold_sales_facts,product_id,Direct,Passthrough
+silver,products_silver,product_name,gold,gold_sales_facts,product_name,Indirect,Join on sales_data_silver.product_id = products_silver.product_id
+silver,products_silver,category,gold,gold_sales_facts,product_category,Indirect,Join on sales_data_silver.product_id = products_silver.product_id
+silver,products_silver,standard_price,gold,gold_sales_facts,product_standard_price,Indirect,Join on sales_data_silver.product_id = products_silver.product_id
+silver,sales_data_silver,quantity,gold,gold_sales_facts,quantity,Direct,Passthrough
+silver,sales_data_silver,unit_price,gold,gold_sales_facts,unit_price,Direct,Passthrough
+silver,sales_data_silver,total_amount,gold,gold_sales_facts,total_amount,Direct,Passthrough
+silver,sales_data_silver,customer_segment,gold,gold_sales_facts,customer_segment,Direct,Passthrough
+silver,sales_data_silver,payment_method,gold,gold_sales_facts,payment_method,Direct,Passthrough
+silver,sales_data_silver,_load_timestamp,gold,gold_sales_facts,sales_load_timestamp,Indirect,Passthrough
+silver,sales_data_silver,_source_file,gold,gold_sales_facts,sales_source_file,Indirect,Passthrough

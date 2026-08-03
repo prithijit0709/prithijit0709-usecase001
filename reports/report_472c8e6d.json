@@ -1,0 +1,10 @@
+{
+  "direct_answer": {
+    "question": "Process the attached CSV and generate a report on top 3 selling products",
+    "answer": "Analysis could not be structured.",
+    "why": "Agent response did not contain a parseable JSON object.",
+    "approach": "N/A"
+  },
+  "charts": [],
+  "detailed_analysis": "No structured analysis available."
+}

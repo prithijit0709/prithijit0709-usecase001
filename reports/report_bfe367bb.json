@@ -1,0 +1,10 @@
+{
+  "direct_answer": {
+    "question": "Most selling product",
+    "answer": "Analysis could not be structured.",
+    "why": "Agent response did not contain a parseable JSON object.",
+    "approach": "N/A"
+  },
+  "charts": [],
+  "detailed_analysis": "No structured analysis available."
+}

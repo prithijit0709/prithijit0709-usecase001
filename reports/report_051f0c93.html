@@ -1,0 +1,187 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Executive Report - 051f0c93</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f5f5f5;
+                color: #333;
+            }
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 30px;
+                border-radius: 10px;
+                margin-bottom: 30px;
+            }
+            .header h1 { margin: 0; font-size: 32px; }
+            .header p { margin: 10px 0 0 0; opacity: 0.9; }
+            .section {
+                background: white;
+                padding: 25px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .section h2 {
+                color: #667eea;
+                border-bottom: 3px solid #667eea;
+                padding-bottom: 10px;
+                margin-top: 0;
+            }
+            .answer-section {
+                background: #e8f4f8;
+                padding: 20px;
+                border-radius: 8px;
+                border-left: 4px solid #28a745;
+            }
+            .answer-section p { margin: 0; line-height: 1.6; font-size: 16px; color: #333; }
+            .approach-section { margin: 20px 0; }
+            .approach-section h3 { color: #667eea; font-size: 16px; margin: 20px 0 10px 0; }
+            .code-block {
+                background: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 15px;
+                overflow-x: auto;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                line-height: 1.4;
+                color: #333;
+                margin: 0 0 15px 0;
+            }
+            .code-block code { color: #667eea; }
+            .approach-section p { line-height: 1.6; color: #555; margin: 0 0 15px 0; }
+            .chart-container { margin: 20px 0; }
+            .footer {
+                text-align: center;
+                color: #999;
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>&#128202; Executive Report</h1>
+            <p><strong>Business Question:</strong> Profile 3 CSVs: products (20 rows: product_id, product_name, category, standard_price), stores (10 rows: store_id, store_name, region, city, state), sales_data (186 rows: transaction_id, transaction_date, store_id, product_id, product_name, category, quantity, unit_price, total_amount, customer_segment, payment_method). Join keys: sales_data.store_id → stores.store_id, sales_data.product_id → products.product_id. Known issues: mixed date formats in transaction_date (MM/DD/YYYY and YYYY-MM-DD), negative quantity/total_amount = returns (prefix RET), duplicate product_name/category columns in sales_data (already in products)</p>
+        </div>
+        <div class="section">
+            <h2>&#9989; Answer</h2>
+            
+    <div class="answer-section">
+        <p>Analysis could not be structured.</p>
+    </div>
+    
+        </div>
+        <div class="section">
+            <h2>&#128202; Approach &amp; Query</h2>
+            
+    <div class="approach-section">
+        <h3>Query Code</h3>
+        <pre class="code-block"><code>
+WITH SalesData AS (
+    SELECT
+        product_name,
+        region,
+        city,
+        total_amount,
+        CASE
+            WHEN unit_price = 0 THEN 0
+            ELSE total_amount / unit_price
+        END AS quantity_sold
+    FROM
+        fact_sales
+    WHERE
+        total_amount &gt; 0
+),
+OverallMetrics AS (
+    SELECT
+        SUM(total_amount) AS total_sales,
+        SUM(quantity_sold) AS total_quantity_sold,
+        AVG(total_amount) AS average_transaction_value
+    FROM
+        SalesData
+),
+TopProductsByAmount AS (
+    SELECT
+        product_name,
+        SUM(total_amount) AS product_total_amount
+    FROM
+        SalesData
+    GROUP BY
+        product_name
+    ORDER BY
+        product_total_amount DESC
+    LIMIT 5
+),
+TopProductsByQuantity AS (
+    SELECT
+        product_name,
+        SUM(quantity_sold) AS product_total_quantity
+    FROM
+        SalesData
+    GROUP BY
+        product_name
+    ORDER BY
+        product_total_quantity DESC
+    LIMIT 5
+),
+SalesByRegion AS (
+    SELECT
+        region,
+        SUM(total_amount) AS region_sales
+    FROM
+        SalesData
+    GROUP BY
+        region
+    ORDER BY
+        region_sales DESC
+),
+SalesByCity AS (
+    SELECT
+        city,
+        SUM(total_amount) AS city_sales
+    FROM
+        SalesData
+    GROUP BY
+        city
+    ORDER BY
+        city_sales DESC
+)
+SELECT
+    (SELECT total_sales FROM OverallMetrics) AS total_sales,
+    (SELECT total_quantity_sold FROM OverallMetrics) AS total_quantity_sold,
+    (SELECT average_transaction_value FROM OverallMetrics) AS average_transaction_value,
+    (SELECT json_group_array(json_object('product_name', product_name, 'product_total_amount', product_total_amount)) FROM TopProductsByAmount) AS top_products_by_amount,
+    (SELECT json_group_array(json_object('product_name', product_name, 'product_total_quantity', product_total_quantity)) FROM TopProductsByQuantity) AS top_products_by_quantity,
+    (SELECT json_group_array(json_object('region', region, 'region_sales', region_sales)) FROM SalesByRegion) AS sales_by_region,
+    (SELECT json_group_array(json_object('city', city, 'city_sales', city_sales)) FROM SalesByCity) AS sales_by_city
+</code></pre>
+        <h3>Query Description</h3>
+        <p>N/A</p>
+    </div>
+    
+        </div>
+        <div class="section">
+            <h2>&#128201; Visual Evidence</h2>
+            <div class="chart-container">
+                <p>No charts generated.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Generated by IDAMP (Intent-Driven Agentic Medallion Pipeline)</p>
+            <p>Report Date: 2026-05-22 16:09:58</p>
+        </div>
+    </body>
+    </html>
+    

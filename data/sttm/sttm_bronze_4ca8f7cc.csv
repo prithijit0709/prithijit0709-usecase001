@@ -1,0 +1,21 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+landing,products,product_id,bronze,products,product_id,Direct Map,Direct map from landing.products.product_id
+landing,products,product_name,bronze,products,product_name,Direct Map,Direct map from landing.products.product_name
+landing,products,category,bronze,products,category,Direct Map,Direct map from landing.products.category
+landing,products,standard_price,bronze,products,standard_price,Direct Map,Direct map from landing.products.standard_price
+landing,sales_data,transaction_id,bronze,sales_data,transaction_id,Direct Map,Direct map from landing.sales_data.transaction_id
+landing,sales_data,transaction_date,bronze,sales_data,transaction_date,Direct Map,Direct map from landing.sales_data.transaction_date
+landing,sales_data,store_id,bronze,sales_data,store_id,Direct Map,Direct map from landing.sales_data.store_id
+landing,sales_data,product_id,bronze,sales_data,product_id,Direct Map,Direct map from landing.sales_data.product_id
+landing,sales_data,product_name,bronze,sales_data,product_name,Direct Map,Direct map from landing.sales_data.product_name
+landing,sales_data,category,bronze,sales_data,category,Direct Map,Direct map from landing.sales_data.category
+landing,sales_data,quantity,bronze,sales_data,quantity,Direct Map,Direct map from landing.sales_data.quantity
+landing,sales_data,unit_price,bronze,sales_data,unit_price,Direct Map,Direct map from landing.sales_data.unit_price
+landing,sales_data,total_amount,bronze,sales_data,total_amount,Direct Map,Direct map from landing.sales_data.total_amount
+landing,sales_data,customer_segment,bronze,sales_data,customer_segment,Direct Map,Direct map from landing.sales_data.customer_segment
+landing,sales_data,payment_method,bronze,sales_data,payment_method,Direct Map,Direct map from landing.sales_data.payment_method
+landing,stores,store_id,bronze,stores,store_id,Direct Map,Direct map from landing.stores.store_id
+landing,stores,store_name,bronze,stores,store_name,Direct Map,Direct map from landing.stores.store_name
+landing,stores,region,bronze,stores,region,Direct Map,Direct map from landing.stores.region
+landing,stores,city,bronze,stores,city,Direct Map,Direct map from landing.stores.city
+landing,stores,state,bronze,stores,state,Direct Map,Direct map from landing.stores.state
