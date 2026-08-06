@@ -1,0 +1,7 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+,,,gold,store_sales,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sample_sales_silver,_source_file,gold,store_sales,source_file,Direct,Passthrough
+silver,sample_sales_silver,_load_timestamp,gold,store_sales,load_timestamp,Direct,Passthrough
+silver,sample_sales_silver,store_id,gold,store_sales,store_id,Direct,Passthrough
+silver,sample_sales_silver,sales_amount,gold,store_sales,sales_amount,Direct,Passthrough
+silver,sample_sales_silver,store_id,gold,store_sales,total_sales_amount,Indirect,SUM(sales_amount) GROUP BY store_id

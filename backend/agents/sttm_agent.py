@@ -5,6 +5,7 @@ from typing import Any
 
 from core.audit import AuditLogger
 from core.config import GEMINI_MODEL, GOOGLE_API_KEY, GROQ_API_KEY, GROQ_MODEL, LLM_PROVIDER
+from core.llm import make_llm
 
 try:
     from core.memory import query_memory
@@ -23,14 +24,7 @@ class BaseAgent:
         self.llm = llm or self._make_llm()
 
     def _make_llm(self) -> Any:
-        if LLM_PROVIDER == "groq":
-            from langchain_groq import ChatGroq
-
-            return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-
-        from langchain_google_genai import ChatGoogleGenerativeAI
-
-        return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+        return make_llm()
 
     def log(self, action: str, **kwargs) -> None:
         self.audit.log(self.agent_name, action, **kwargs)

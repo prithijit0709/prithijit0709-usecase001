@@ -1,0 +1,13 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+sample_sales_bronze,parquet,,sample_sales_silver,parquet,pk_sample_sales_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+sample_sales_bronze,parquet,sale_date,sample_sales_silver,parquet,sale_date,Direct,Date standardisation to 'yyyy-MM-dd' format and null handling
+sample_sales_bronze,parquet,product_id,sample_sales_silver,parquet,product_id,Direct,Type casting to integer
+sample_sales_bronze,parquet,product_name,sample_sales_silver,parquet,product_name,Direct,Null handling and deduplication
+sample_sales_bronze,parquet,category,sample_sales_silver,parquet,category,Direct,Null handling and deduplication
+sample_sales_bronze,parquet,store_id,sample_sales_silver,parquet,store_id,Direct,Type casting to integer
+sample_sales_bronze,parquet,store_name,sample_sales_silver,parquet,store_name,Direct,Null handling and deduplication
+sample_sales_bronze,parquet,quantity,sample_sales_silver,parquet,quantity,Direct,Null handling and type casting to integer
+sample_sales_bronze,parquet,unit_price,sample_sales_silver,parquet,unit_price,Direct,Null handling and type casting to decimal
+sample_sales_bronze,parquet,total_amount,sample_sales_silver,parquet,total_amount,Direct,Null handling and type casting to decimal
+sample_sales_bronze,parquet,_load_timestamp,sample_sales_silver,parquet,_load_timestamp,Direct,Date standardisation to 'yyyy-MM-dd HH:mm:ss' format and null handling
+sample_sales_bronze,parquet,_source_file,sample_sales_silver,parquet,_source_file,Direct,Null handling and deduplication

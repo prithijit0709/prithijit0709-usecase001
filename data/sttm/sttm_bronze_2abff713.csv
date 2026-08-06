@@ -1,0 +1,10 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+file,sample_sales.csv,sale_date,bronze,sample_sales,sale_date,identity,source_column
+file,sample_sales.csv,product_id,bronze,sample_sales,product_id,identity,source_column
+file,sample_sales.csv,product_name,bronze,sample_sales,product_name,identity,source_column
+file,sample_sales.csv,category,bronze,sample_sales,category,identity,source_column
+file,sample_sales.csv,store_id,bronze,sample_sales,store_id,identity,source_column
+file,sample_sales.csv,store_name,bronze,sample_sales,store_name,identity,source_column
+file,sample_sales.csv,quantity,bronze,sample_sales,quantity,identity,source_column
+file,sample_sales.csv,unit_price,bronze,sample_sales,unit_price,identity,source_column
+file,sample_sales.csv,total_amount,bronze,sample_sales,total_amount,identity,source_column

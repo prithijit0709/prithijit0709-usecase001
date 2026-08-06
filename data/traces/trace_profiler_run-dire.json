@@ -1,0 +1,308 @@
+[
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:33:04.910046+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-6\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-6\\test_profiler_uses_one_direct_0\\profile_combined_20260806_160304.json"
+    },
+    "duration_seconds": 0.007,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:34:45.690451+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_profiler_uses_one_direct_0\\profile_combined_20260806_160445.json"
+    },
+    "duration_seconds": 0.006,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:39:18.752844+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_profiler_uses_one_direct_0\\profile_combined_20260806_160918.json"
+    },
+    "duration_seconds": 0.006,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:41:10.942021+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-16\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-16\\test_profiler_uses_one_direct_0\\profile_combined_20260806_161110.json"
+    },
+    "duration_seconds": 0.005,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:41:25.625780+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-17\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-17\\test_profiler_uses_one_direct_0\\profile_combined_20260806_161125.json"
+    },
+    "duration_seconds": 0.005,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:45:09.138018+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_profiler_uses_one_direct_0\\profile_combined_20260806_161509.json"
+    },
+    "duration_seconds": 0.015,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:54:31.701849+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_profiler_uses_one_direct_0\\profile_combined_20260806_162431.json"
+    },
+    "duration_seconds": 0.028,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:05:06.822358+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_profiler_uses_one_direct_0\\profile_combined_20260806_163506.json"
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:09:58.438738+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_profiler_uses_one_direct_0\\profile_combined_20260806_163958.json"
+    },
+    "duration_seconds": 0.016,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:08.194049+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_profiler_uses_one_direct_0\\profile_combined_20260806_164008.json"
+    },
+    "duration_seconds": 0.005,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:15.609209+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_profiler_uses_one_direct_0\\profile_combined_20260806_164015.json"
+    },
+    "duration_seconds": 0.005,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:22:11.387240+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_profiler_uses_one_direct_0\\profile_combined_20260806_165211.json"
+    },
+    "duration_seconds": 0.007,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:52:18.539217+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_profiler_uses_one_direct_0\\profile_combined_20260806_172218.json"
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:01:20.949976+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_profiler_uses_one_direct_0\\profile_combined_20260806_173120.json"
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:23.414563+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_profiler_uses_one_direct_0\\profile_combined_20260806_173223.json"
+    },
+    "duration_seconds": 0.006,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:42.290614+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_profiler_uses_one_direct_0\\profile_combined_20260806_173242.json"
+    },
+    "duration_seconds": 0.005,
+    "status": "success"
+  },
+  {
+    "agent": "profiler",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:21:56.041103+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_profiler_uses_one_direct_0\\sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_profiler_uses_one_direct_0\\profile_combined_20260806_175156.json"
+    },
+    "duration_seconds": 0.013,
+    "status": "success"
+  }
+]

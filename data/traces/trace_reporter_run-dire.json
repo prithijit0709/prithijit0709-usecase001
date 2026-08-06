@@ -1,0 +1,363 @@
+[
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:34:34.197456+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-8\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-8\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.471,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:35:59.843136+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.037,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:40:27.433427+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.031,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:42:29.419304+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-18\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-18\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.027,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:45:09.860382+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.034,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:54:32.251880+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:04:45.874048+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-24\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-24\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.032,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:05:07.471956+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.032,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:01.412669+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.036,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:08.644224+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.029,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:16.042403+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.029,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:21:59.544723+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-33\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-33\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:22:12.027709+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:52:21.622945+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:00:43.568906+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-44\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-44\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.03,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:01:21.593673+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.03,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:24.110781+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.034,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:42.837532+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.029,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:21:56.597805+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_reporter_uses_two_direct_0\\gold_output.parquet"
+      ],
+      "business_intent": "Analyse revenue by region"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_reporter_uses_two_direct_0\\report_run-dire.html"
+    },
+    "duration_seconds": 0.031,
+    "status": "success"
+  }
+]

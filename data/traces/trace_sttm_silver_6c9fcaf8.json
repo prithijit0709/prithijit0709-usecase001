@@ -1,0 +1,19 @@
+[
+  {
+    "agent": "sttm_silver",
+    "run_id": "6c9fcaf8-755b-4968-89cf-c79b5c09bf48",
+    "started_at": "2026-08-06T11:47:35.473488+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\bronze_layer\\sample_sales_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 56.56,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_silver"
+  }
+]

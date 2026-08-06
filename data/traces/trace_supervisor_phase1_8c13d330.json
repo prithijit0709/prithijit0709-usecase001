@@ -1,0 +1,22 @@
+[
+  {
+    "agent": "supervisor_phase1",
+    "run_id": "8c13d330-1b50-4583-ac91-5254a26aa737",
+    "started_at": "2026-08-06T09:06:09.960549+00:00",
+    "input": {
+      "phase": "phase1",
+      "goal": "Phase 1 goal for run_id='8c13d330-1b50-4583-ac91-5254a26aa737'.\n\nUploaded files: ['C:\\\\Users\\\\pusmajumdar\\\\Downloads\\\\pusmajumdar-UseCase-001\\\\data\\\\landing\\\\sample_sales.csv']\n\nYou need to accomplish two things in this phase:\n1. Profile the uploaded raw CSV files to understand their structure, column semantics, data quality, and potential join keys across datasets.\n2. Use that profile to generate a complete Bronze STTM CSV that covers every column with ingestion rules (renaming, type casting, metadata injection).\n\nBronze is intent-agnostic \u2014 map every column mechanically. Plan which tools to call and in what order. Verify each output before proceeding.",
+      "tools_available": [
+        "profiler_agent_tool",
+        "sttm_agent_tool"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 120.015,
+    "status": "failed",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kzb0xfqaeexb3ck6c292g4sn` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7227, Requested 2137. Please try again in 10.23s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]

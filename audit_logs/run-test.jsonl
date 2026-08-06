@@ -1,0 +1,403 @@
+{"timestamp": "2026-08-06T08:23:46.845066+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T08:23:47.338338+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 1, "tables": ["sales"]}
+{"timestamp": "2026-08-06T08:23:47.339040+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T08:23:47.339592+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T08:23:47.340985+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:23:47.343117+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T08:23:47.350440+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 1, "tables": ["customers"]}
+{"timestamp": "2026-08-06T08:23:47.351244+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T08:23:47.351833+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T08:23:47.352269+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T08:23:47.352643+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T08:23:47.353057+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T08:23:47.355370+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T08:23:47.364313+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 1, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T08:23:47.364949+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T08:23:47.365902+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T08:23:47.366869+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:23:47.370288+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T08:23:47.377552+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 1, "tables": ["orders"]}
+{"timestamp": "2026-08-06T08:23:47.378144+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T08:23:47.378619+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T08:23:47.378922+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:23:47.380876+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T08:23:47.388808+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 1, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T08:23:47.389547+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T08:23:47.390050+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T08:23:47.390391+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T08:23:47.390746+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T08:23:47.391073+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T08:23:47.391390+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T08:23:47.391768+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T08:46:09.498919+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T08:46:09.633379+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T08:46:09.633924+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T08:46:09.634326+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T08:46:09.634722+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:46:09.636927+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T08:46:09.642807+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T08:46:09.643281+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T08:46:09.643636+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T08:46:09.643901+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T08:46:09.644186+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T08:46:09.644431+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T08:46:09.646839+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T08:46:09.653726+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T08:46:09.654465+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T08:46:09.654953+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T08:46:09.655254+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:46:09.657050+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T08:46:09.663828+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T08:46:09.664380+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T08:46:09.665050+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T08:46:09.665495+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T08:46:09.668281+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T08:46:09.676067+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T08:46:09.676668+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T08:46:09.677142+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T08:46:09.677467+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T08:46:09.677841+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T08:46:09.678131+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T08:46:09.678501+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T08:46:09.678854+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T10:45:10.614660+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T10:45:11.095117+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T10:45:11.095897+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T10:45:11.096505+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T10:45:11.096853+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:45:11.098722+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T10:45:11.106557+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T10:45:11.107110+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T10:45:11.107527+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T10:45:11.107836+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T10:45:11.108097+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T10:45:11.108357+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T10:45:11.110009+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T10:45:11.117825+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T10:45:11.118442+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T10:45:11.118863+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T10:45:11.119177+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:45:11.121180+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T10:45:11.129596+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T10:45:11.130290+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T10:45:11.130844+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T10:45:11.131240+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:45:11.133094+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T10:45:11.140442+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T10:45:11.140962+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T10:45:11.141363+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T10:45:11.141652+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T10:45:11.141955+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T10:45:11.142213+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T10:45:11.142481+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T10:45:11.142734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T10:54:32.935148+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T10:54:33.368674+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T10:54:33.368674+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T10:54:33.368674+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T10:54:33.368674+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:54:33.368674+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:54:33.385226+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T10:54:33.401703+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T10:54:33.401703+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T10:54:33.401703+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T10:54:33.401703+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T10:54:33.408734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T10:54:33.408734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T10:54:33.408734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T10:54:33.408734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T10:54:33.408734+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T10:54:33.416739+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T10:54:33.416739+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T10:54:33.416739+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T10:54:33.416739+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:05:08.288897+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T11:05:08.672474+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T11:05:08.672474+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:05:08.672474+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:05:08.672474+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:05:08.672474+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:05:08.689119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T11:05:08.698675+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T11:05:08.698675+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T11:05:08.698675+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T11:05:08.698675+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:05:08.698675+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T11:05:08.705564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T11:05:08.721072+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:10:09.110761+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T11:10:09.196901+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T11:10:09.197453+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:10:09.197938+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:10:09.198263+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:09.200321+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T11:10:09.207805+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T11:10:09.208518+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T11:10:09.208931+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T11:10:09.209184+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T11:10:09.209488+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T11:10:09.209727+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:10:09.211746+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T11:10:09.219421+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T11:10:09.220047+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T11:10:09.220536+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T11:10:09.220863+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:09.222911+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T11:10:09.230208+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T11:10:09.230723+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T11:10:09.231181+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T11:10:09.231497+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:09.233644+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T11:10:09.240849+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T11:10:09.241445+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:10:09.241887+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:10:09.242234+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T11:10:09.242574+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T11:10:09.242990+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T11:10:09.243363+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T11:10:09.243660+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:10:16.516319+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T11:10:16.598786+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T11:10:16.599306+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:10:16.599789+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:10:16.600183+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:16.602972+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T11:10:16.614925+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T11:10:16.615629+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T11:10:16.616232+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T11:10:16.616687+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T11:10:16.617119+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T11:10:16.617534+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:10:16.620347+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T11:10:16.629605+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T11:10:16.630236+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T11:10:16.630751+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T11:10:16.631106+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:16.634074+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T11:10:16.642935+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T11:10:16.643586+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T11:10:16.644200+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T11:10:16.644714+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:10:16.647267+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T11:10:16.655224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T11:10:16.655822+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:10:16.656282+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:10:16.656598+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T11:10:16.656955+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T11:10:16.657291+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T11:10:16.657574+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T11:10:16.657924+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:22:12.477456+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:22:12.561163+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T11:22:12.577515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:22:12.591549+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T11:22:12.596747+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:52:22.122821+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T11:52:22.506005+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T11:52:22.506005+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:52:22.506005+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:52:22.506005+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T11:52:22.523028+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T11:52:22.533554+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T11:52:22.539308+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T11:52:22.556224+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:01:22.388265+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T12:01:22.789439+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T12:01:22.790185+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:01:22.790751+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:01:22.791151+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:01:22.793361+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T12:01:22.801233+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T12:01:22.801605+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T12:01:22.801944+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T12:01:22.802197+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T12:01:22.802443+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T12:01:22.802708+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:01:22.804782+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T12:01:22.811684+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T12:01:22.812250+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T12:01:22.812710+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T12:01:22.813014+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:01:22.815414+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T12:01:22.823476+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T12:01:22.824200+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T12:01:22.824750+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T12:01:22.825126+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:01:22.827257+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T12:01:22.834837+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T12:01:22.835350+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:01:22.835740+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:01:22.836021+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T12:01:22.836322+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T12:01:22.836588+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T12:01:22.836926+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T12:01:22.837293+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:02:24.730393+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T12:02:24.827277+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T12:02:24.827936+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:02:24.828515+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:02:24.828867+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:24.831250+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T12:02:24.841811+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T12:02:24.842452+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T12:02:24.842924+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T12:02:24.843213+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T12:02:24.843472+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T12:02:24.843719+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:02:24.845862+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T12:02:24.853692+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T12:02:24.854220+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T12:02:24.855300+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T12:02:24.855725+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:24.858615+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T12:02:24.867140+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T12:02:24.867804+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T12:02:24.868298+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T12:02:24.868663+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:24.871040+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T12:02:24.879365+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T12:02:24.880017+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:02:24.880548+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:02:24.880947+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T12:02:24.881397+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T12:02:24.881741+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T12:02:24.881991+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T12:02:24.882221+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:02:43.380882+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T12:02:43.469387+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T12:02:43.470053+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:02:43.470565+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:02:43.470957+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:43.473262+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T12:02:43.480520+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T12:02:43.480939+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T12:02:43.481310+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T12:02:43.481564+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T12:02:43.481782+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T12:02:43.482003+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:02:43.484244+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T12:02:43.491633+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T12:02:43.492300+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T12:02:43.492879+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T12:02:43.493242+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:43.495997+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T12:02:43.504897+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T12:02:43.505600+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T12:02:43.506191+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T12:02:43.506527+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:02:43.508880+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T12:02:43.516065+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T12:02:43.516626+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:02:43.517051+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:02:43.517333+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T12:02:43.517634+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T12:02:43.517885+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T12:02:43.518124+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T12:02:43.518347+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:21:57.154213+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "land sales data"}
+{"timestamp": "2026-08-06T12:21:57.241988+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales"]}
+{"timestamp": "2026-08-06T12:21:57.242541+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:21:57.242969+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:21:57.243270+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:21:57.245394+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "silver", "table_count": 1, "intent": "clean customer rows"}
+{"timestamp": "2026-08-06T12:21:57.253362+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "silver", "knowledge_docs": 4, "tables": ["customers"]}
+{"timestamp": "2026-08-06T12:21:57.253963+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "silver", "name": "customers"}
+{"timestamp": "2026-08-06T12:21:57.254399+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "silver", "name": "customers", "error": "llm unavailable"}
+{"timestamp": "2026-08-06T12:21:57.254732+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "silver", "table": "customers", "reason": "llm unavailable"}
+{"timestamp": "2026-08-06T12:21:57.255054+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "silver", "name": "customers", "fallback": true}
+{"timestamp": "2026-08-06T12:21:57.255328+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "silver", "generated": 1, "fallbacks": 1}
+{"timestamp": "2026-08-06T12:21:57.257517+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "gold", "table_count": 1, "intent": "build revenue KPI"}
+{"timestamp": "2026-08-06T12:21:57.265033+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "gold", "knowledge_docs": 4, "tables": ["sales_kpi"]}
+{"timestamp": "2026-08-06T12:21:57.265462+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "gold", "name": "sales_kpi"}
+{"timestamp": "2026-08-06T12:21:57.265870+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "gold", "name": "sales_kpi", "fallback": false}
+{"timestamp": "2026-08-06T12:21:57.266278+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "gold", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:21:57.268830+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 1, "intent": "ingest orders"}
+{"timestamp": "2026-08-06T12:21:57.276610+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["orders"]}
+{"timestamp": "2026-08-06T12:21:57.277055+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "orders"}
+{"timestamp": "2026-08-06T12:21:57.277509+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "orders", "fallback": false}
+{"timestamp": "2026-08-06T12:21:57.277796+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 1, "fallbacks": 0}
+{"timestamp": "2026-08-06T12:21:57.279950+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_started", "layer": "bronze", "table_count": 2, "intent": "ingest everything"}
+{"timestamp": "2026-08-06T12:21:57.288826+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "context_collected", "layer": "bronze", "knowledge_docs": 4, "tables": ["sales", "products"]}
+{"timestamp": "2026-08-06T12:21:57.289472+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "sales"}
+{"timestamp": "2026-08-06T12:21:57.290011+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "sales", "fallback": false}
+{"timestamp": "2026-08-06T12:21:57.290547+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_started", "layer": "bronze", "name": "products"}
+{"timestamp": "2026-08-06T12:21:57.291062+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_failed", "layer": "bronze", "name": "products", "error": "table-specific failure"}
+{"timestamp": "2026-08-06T12:21:57.291404+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "fallback_used", "layer": "bronze", "table": "products", "reason": "table-specific failure"}
+{"timestamp": "2026-08-06T12:21:57.291699+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "proposal_completed", "layer": "bronze", "name": "products", "fallback": true}
+{"timestamp": "2026-08-06T12:21:57.292082+00:00", "run_id": "run-test", "agent": "sttm_agent", "action": "run_completed", "layer": "bronze", "generated": 2, "fallbacks": 1}

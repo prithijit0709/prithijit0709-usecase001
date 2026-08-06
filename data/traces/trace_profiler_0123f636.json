@@ -1,0 +1,19 @@
+[
+  {
+    "agent": "profiler",
+    "run_id": "0123f636-4569-4184-979b-034a5532ac9f",
+    "started_at": "2026-08-06T09:06:13.964565+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 24.34,
+    "status": "failed",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kzb0xfqaeexb3ck6c292g4sn` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7308, Requested 2144. Please try again in 10.89s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]

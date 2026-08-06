@@ -1,0 +1,23 @@
+[
+  {
+    "agent": "reporter",
+    "run_id": "7db9c561-08c9-4688-8a85-5d9a94089c9b",
+    "started_at": "2026-08-06T12:28:04.058365+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\gold_layer\\sales.parquet",
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\gold_layer\\stores.parquet",
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\gold_layer\\top_stores.parquet"
+      ],
+      "business_intent": "Which store had the highest total sales amount?"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\reports\\report_7db9c561.html"
+    },
+    "duration_seconds": 108.841,
+    "status": "success"
+  }
+]

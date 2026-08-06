@@ -1,0 +1,157 @@
+{
+  "files": [
+    "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+  ],
+  "datasets": {
+    "sample_sales": {
+      "file": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv",
+      "shape": {
+        "rows": 12,
+        "columns": 9
+      },
+      "columns": {
+        "sale_date": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "2024-01-15",
+            "2024-01-15",
+            "2024-01-16",
+            "2024-01-16",
+            "2024-01-17"
+          ]
+        },
+        "product_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "P001",
+            "P002",
+            "P003",
+            "P004",
+            "P005"
+          ]
+        },
+        "product_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "Laptop Pro",
+            "Office Chair",
+            "Smartphone X",
+            "Coffee Maker",
+            "Wireless Mouse"
+          ]
+        },
+        "category": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 5,
+          "sample_values": [
+            "Electronics",
+            "Furniture",
+            "Electronics",
+            "Home Appliances",
+            "Electronics"
+          ]
+        },
+        "store_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "S001",
+            "S002",
+            "S001",
+            "S003",
+            "S002"
+          ]
+        },
+        "store_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "Downtown",
+            "Uptown",
+            "Downtown",
+            "Suburb",
+            "Uptown"
+          ]
+        },
+        "quantity": {
+          "dtype": "int64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 11,
+          "min": 1.0,
+          "max": 20.0,
+          "mean": 6.666666666666667
+        },
+        "unit_price": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 3.49,
+          "max": 1299.99,
+          "mean": 255.24166666666665
+        },
+        "total_amount": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 69.8,
+          "max": 2699.97,
+          "mean": 744.6525
+        }
+      }
+    }
+  },
+  "analysis": {
+    "semantic_meanings": {
+      "sample_sales": {
+        "sale_date": "Date of sale",
+        "product_id": "Unique product identifier",
+        "product_name": "Name of the product",
+        "category": "Product category",
+        "store_id": "Unique store identifier",
+        "store_name": "Name of the store",
+        "quantity": "Number of units sold",
+        "unit_price": "Price per unit",
+        "total_amount": "Total sale amount"
+      }
+    },
+    "join_keys": [
+      {
+        "left_dataset": "sample_sales",
+        "left_column": "product_id",
+        "right_dataset": "product_catalog",
+        "right_column": "product_id",
+        "confidence": "high"
+      },
+      {
+        "left_dataset": "sample_sales",
+        "left_column": "store_id",
+        "right_dataset": "store_directory",
+        "right_column": "store_id",
+        "confidence": "high"
+      }
+    ],
+    "quality_notes": [
+      "No null values found in any column",
+      "Quantity and unit_price columns have a relatively low number of unique values",
+      "Total amount column has a large range of values, suggesting potential outliers or errors"
+    ]
+  }
+}

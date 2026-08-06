@@ -1,0 +1,401 @@
+[
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:27:13.881054+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:35:56.495109+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:38:08.569614+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:39:07.392587+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:45:10.242059+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T10:54:32.618530+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:05:07.872298+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:09:53.431837+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:08.893990+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:10:16.308599+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:22:12.277787+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:51:27.072622+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:51:46.106715+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T11:52:21.833103+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:01:21.958783+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:24.452168+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:02:43.103816+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:21:23.641415+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  },
+  {
+    "agent": "silver_agent",
+    "run_id": "run-direct",
+    "started_at": "2026-08-06T12:21:56.845151+00:00",
+    "input": {
+      "input_files": [
+        "bronze.parquet"
+      ],
+      "sttm_path": "sttm.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "silver.parquet"
+      ]
+    },
+    "duration_seconds": 0.0,
+    "status": "success"
+  }
+]

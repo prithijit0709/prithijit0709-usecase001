@@ -1,4 +1,4 @@
-"""Data profiling AI agent — fully autonomous ReAct version.
+"""Deterministic data profiling with one semantic-analysis LLM request.
 
 The agent receives a goal from the orchestrator, uses inspect_files_tool to
 preview structure first, forms an explicit plan, then calls profiler_tool for
@@ -17,6 +17,7 @@ from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from core.config import PROFILES_DIR, LLM_PROVIDER, GROQ_API_KEY, GROQ_MODEL, GOOGLE_API_KEY, GEMINI_MODEL
 from core.audit import AuditLogger
+from core.llm import make_llm
 from core.observability import AgentTrace
 
 
@@ -169,11 +170,7 @@ def _make_profiler_tools(file_paths: list[str], run_id: str):
 # ---------------------------------------------------------------------------
 
 def _make_llm():
-    if LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+    return make_llm()
 
 
 # ---------------------------------------------------------------------------
@@ -203,48 +200,33 @@ def profile_multiple_datasets(file_paths: list[str], run_id: str, task_descripti
     print(f"[PROFILER] Started — files: {file_paths}")
     audit.log("profiler", "started_multi", input_files=file_paths)
 
-    inspect_tool, stats_tool = _make_profiler_tools(file_paths, run_id)
+    raw_stats = _compute_stats(file_paths)
     llm = _make_llm()
-
-    print(f"[PROFILER] Running autonomous ReAct agent ({LLM_PROVIDER})")
-    agent = create_agent(llm, [inspect_tool, stats_tool], system_prompt=PROFILER_AGENT_PROMPT)
+    stats_context = json.dumps(raw_stats, default=str)[:4500]
+    semantic_prompt = (
+        "Analyze this compact CSV profile and return only one JSON object with keys "
+        "semantic_meanings, join_keys, and quality_notes. Do not use markdown.\n"
+        f"Profile: {stats_context}"
+    )
 
     try:
-        result = agent.invoke({"messages": [HumanMessage(content=task_description)]})
+        response = llm.invoke(semantic_prompt)
     except Exception as e:
         trace.fail(str(e))
         raise
 
-    messages = result.get("messages", [])
-    trace.extract_from_messages(messages)
-
-    # Extract raw stats (from profiler_tool message) and semantic analysis (from final AI message)
-    raw_stats: dict = {}
     analysis: dict = {}
-
-    for msg in messages:
-        content = getattr(msg, "content", "")
-        if not isinstance(content, str):
-            continue
-        text = content
-        if "```json" in text:
-            text = text.split("```json")[1].split("```")[0]
-        elif text.strip().startswith("```"):
-            text = text.strip().lstrip("`").strip()
-        try:
-            parsed = json.loads(text)
-            if isinstance(parsed, dict):
-                if "datasets" in parsed and "files" in parsed:
-                    raw_stats = parsed
-                elif any(k in parsed for k in ("semantic_meanings", "join_keys", "quality_notes")):
-                    analysis = parsed
-        except (json.JSONDecodeError, ValueError):
-            continue
-
-    # Fallback: recompute stats locally if tool message was not parseable
-    if not raw_stats:
-        print("[PROFILER] Recomputing stats locally (tool message not parseable)")
-        raw_stats = _compute_stats(file_paths)
+    text = response.content if isinstance(response.content, str) else str(response.content)
+    if "```json" in text:
+        text = text.split("```json")[1].split("```")[0]
+    elif text.strip().startswith("```"):
+        text = text.strip().lstrip("`").strip()
+    try:
+        parsed = json.loads(text)
+        if isinstance(parsed, dict):
+            analysis = parsed
+    except (json.JSONDecodeError, ValueError):
+        pass
 
     combined_profile = raw_stats
     combined_profile["analysis"] = analysis if analysis else {}

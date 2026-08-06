@@ -1,0 +1,59 @@
+[
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-types",
+    "started_at": "2026-08-06T12:20:31.060948+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-50\\test_incompatible_ai_cast_keep0\\sales_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-50\\test_incompatible_ai_cast_keep0\\sttm_silver_run-type.csv",
+      "row_count": 2
+    },
+    "duration_seconds": 0.044,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-types",
+    "started_at": "2026-08-06T12:21:23.394879+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_incompatible_ai_cast_keep0\\sales_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_incompatible_ai_cast_keep0\\sttm_silver_run-type.csv",
+      "row_count": 2
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-types",
+    "started_at": "2026-08-06T12:21:57.079065+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_incompatible_ai_cast_keep0\\sales_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_incompatible_ai_cast_keep0\\sttm_silver_run-type.csv",
+      "row_count": 2
+    },
+    "duration_seconds": 0.011,
+    "status": "success"
+  }
+]

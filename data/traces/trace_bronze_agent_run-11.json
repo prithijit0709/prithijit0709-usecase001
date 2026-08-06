@@ -1,0 +1,44 @@
+[
+  {
+    "agent": "bronze_agent",
+    "run_id": "run-11",
+    "started_at": "2026-08-06T10:35:56.183419+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_execute_bronze_accepts_ta0\\test.csv"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_execute_bronze_accepts_ta0\\sttm_bronze.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_execute_bronze_accepts_ta0\\test_bronze.parquet"
+      ]
+    },
+    "duration_seconds": 0.013,
+    "status": "success"
+  },
+  {
+    "agent": "bronze_agent",
+    "run_id": "run-11",
+    "started_at": "2026-08-06T10:38:08.145844+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-11\\test_execute_bronze_accepts_ta0\\test.csv"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-11\\test_execute_bronze_accepts_ta0\\sttm_bronze.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-11\\test_execute_bronze_accepts_ta0\\test_bronze.parquet"
+      ]
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  }
+]

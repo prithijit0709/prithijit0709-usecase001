@@ -1,0 +1,306 @@
+[
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T10:42:29.503475+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-18\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-18\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.035,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T10:45:09.970869+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.037,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T10:54:32.352255+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:04:45.989451+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-24\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-24\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:05:07.589270+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.016,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:10:01.560261+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.036,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:10:08.742104+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.031,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:10:16.142725+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.039,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:21:59.627967+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-33\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-33\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:22:12.127780+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T11:52:21.689144+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.044,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T12:00:43.690642+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-44\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-44\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.032,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T12:01:21.689458+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.029,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T12:02:24.228169+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.038,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T12:02:42.933357+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.028,
+    "status": "success"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt2",
+    "started_at": "2026-08-06T12:21:56.692300+00:00",
+    "input": {
+      "gold_files": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_analysis_prompt_contains_0\\gold_p.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "report_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_analysis_prompt_contains_0\\report_run-rpt2.html"
+    },
+    "duration_seconds": 0.029,
+    "status": "success"
+  }
+]

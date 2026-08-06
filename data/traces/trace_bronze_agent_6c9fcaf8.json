@@ -1,0 +1,23 @@
+[
+  {
+    "agent": "bronze_agent",
+    "run_id": "6c9fcaf8-755b-4968-89cf-c79b5c09bf48",
+    "started_at": "2026-08-06T11:47:35.185498+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_bronze_6c9fcaf8.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\bronze_layer\\sample_sales_bronze.parquet"
+      ]
+    },
+    "duration_seconds": 0.283,
+    "status": "success"
+  }
+]

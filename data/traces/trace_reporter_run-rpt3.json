@@ -1,0 +1,290 @@
+[
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T10:40:15.918628+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T10:42:29.543695+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T10:44:46.952592+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T10:45:10.015248+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T10:54:32.385617+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:04:46.039300+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:05:07.638776+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:10:01.619523+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:10:08.779539+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:10:16.191707+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:21:59.661328+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:22:12.176017+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T11:52:21.739260+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T12:00:43.749363+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T12:01:21.725145+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T12:02:24.275455+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.001,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T12:02:42.968054+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  },
+  {
+    "agent": "reporter",
+    "run_id": "run-rpt3",
+    "started_at": "2026-08-06T12:21:56.726467+00:00",
+    "input": {
+      "gold_files": [],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.002,
+    "status": "failed",
+    "error": "No gold files provided"
+  }
+]

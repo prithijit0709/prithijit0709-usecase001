@@ -145,6 +145,15 @@ class TestApplySilverRules:
 
 class TestExecuteSilver:
 
+    def test_execute_silver_does_not_use_llm(self):
+        from agents.silver_agent import execute_silver
+
+        with patch("agents.silver_agent._make_llm", side_effect=AssertionError("LLM called")), \
+             patch("agents.silver_agent._apply_silver_rules", return_value=["silver.parquet"]):
+            results = execute_silver(["bronze.parquet"], "sttm.csv", "run-direct", "execute")
+
+        assert results == ["silver.parquet"]
+
     def test_execute_silver_returns_paths(self, tmp_path, monkeypatch):
         """execute_silver must return a non-empty list of output paths."""
         monkeypatch.setattr("agents.silver_agent.SILVER_DIR", tmp_path)
@@ -165,30 +174,4 @@ class TestExecuteSilver:
         assert isinstance(results, list)
         assert len(results) == 1
 
-    def test_execute_silver_forwards_task_description(self, tmp_path, monkeypatch):
-        """A custom task_description must reach the agent's HumanMessage."""
-        monkeypatch.setattr("agents.silver_agent.SILVER_DIR", tmp_path)
-        bronze_path = tmp_path / "test_bronze.parquet"
-        pd.DataFrame({"id": [1]}).to_parquet(bronze_path, index=False)
-        sttm_path = _passthrough_sttm(tmp_path, columns=("id",))
-
-        captured = []
-
-        def fake_create_agent(llm, tools, system_prompt):
-            mock_agent = MagicMock()
-            def fake_invoke(inputs):
-                captured.extend(inputs["messages"])
-                result = tools[0].invoke({})
-                ai_msg = MagicMock()
-                ai_msg.content = result
-                return {"messages": [ai_msg]}
-            mock_agent.invoke.side_effect = fake_invoke
-            return mock_agent
-
-        from agents.silver_agent import execute_silver
-        with patch("agents.silver_agent.create_agent", side_effect=fake_create_agent), \
-             patch("agents.silver_agent.AuditLogger"):
-            execute_silver([str(bronze_path)], str(sttm_path), "run-31", task_description="custom silver task")
-
-        assert any("custom silver task" in str(getattr(m, "content", "")) for m in captured)
 

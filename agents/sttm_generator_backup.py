@@ -29,6 +29,7 @@ from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from core.config import STTM_DIR, LLM_PROVIDER, GROQ_API_KEY, GROQ_MODEL, GOOGLE_API_KEY, GEMINI_MODEL
 from core.audit import AuditLogger
+from core.llm import make_llm
 from core.observability import AgentTrace
 
 
@@ -273,11 +274,7 @@ def _extract_sttm_rows(result: dict) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def _make_llm():
-    if LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+    return make_llm()
 
 
 # ---------------------------------------------------------------------------

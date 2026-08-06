@@ -22,12 +22,14 @@ I/O contract:
 
 import json
 import os
+from pathlib import Path
 import pandas as pd
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from core.config import STTM_DIR, LLM_PROVIDER, GROQ_API_KEY, GROQ_MODEL, GOOGLE_API_KEY, GEMINI_MODEL
 from core.audit import AuditLogger
+from core.llm import make_llm
 from core.observability import AgentTrace
 
 
@@ -182,6 +184,165 @@ def _prepare_gold_context(silver_output_paths: list[str], silver_sttm_path: str)
     return result
 
 
+def _build_silver_sttm_rows(context: list[dict]) -> list[dict]:
+    rows = []
+    for table in context:
+        filename = str(table.get("filename", ""))
+        source_table = Path(filename).stem
+        table_stem = source_table.removesuffix("_bronze")
+        target_table = f"{table_stem}_silver"
+        base_row = {
+            "source_schema": "Bronze",
+            "source_table": source_table,
+            "target_schema": "Silver",
+            "target_table": target_table,
+        }
+        rows.append({
+            **base_row,
+            "source_column": "",
+            "target_column": f"pk_{table_stem}_silver_id",
+            "transformation_type": "Indirect",
+            "transformation_logic": "Auto-generated sequential surrogate primary key starting from 1",
+        })
+
+        dtypes = table.get("dtypes", {})
+        for column in table.get("columns", []):
+            column_name = str(column)
+            column_lower = column_name.lower()
+            dtype = str(dtypes.get(column, "")).lower()
+
+            if "date" in column_lower or "datetime" in dtype:
+                logic = "Cast to date format YYYY-MM-DD"
+            elif "timestamp" in column_lower:
+                logic = "Cast to timestamp"
+            elif "int" in dtype:
+                logic = "Cast to integer" if column_lower.endswith("id") else "Fill null with median and cast to integer"
+            elif any(token in dtype for token in ("float", "decimal", "double")):
+                logic = "Cast to decimal" if column_lower.endswith("id") else "Fill null with mean and cast to decimal"
+            elif "bool" in dtype:
+                logic = "Fill null with mode"
+            else:
+                logic = "Fill null with default empty string, cast to text, and trim whitespace"
+
+            rows.append({
+                **base_row,
+                "source_column": column_name,
+                "target_column": column_name,
+                "transformation_type": "Direct",
+                "transformation_logic": logic,
+            })
+    return rows
+
+
+def _build_gold_sttm_rows(context: list[dict]) -> list[dict]:
+    rows = []
+    for table in context:
+        source_table = Path(str(table.get("filename", ""))).stem
+        target_table = source_table.removesuffix("_silver")
+        base_row = {
+            "source_schema": "Silver",
+            "source_table": source_table,
+            "target_schema": "Gold",
+            "target_table": target_table,
+        }
+        rows.append({
+            **base_row,
+            "source_column": "",
+            "target_column": "pk_gold_id",
+            "transformation_type": "Indirect",
+            "transformation_logic": "Auto-generated sequential surrogate primary key starting from 1",
+        })
+        for column in table.get("columns", []):
+            rows.append({
+                **base_row,
+                "source_column": str(column),
+                "target_column": str(column),
+                "transformation_type": "Direct",
+                "transformation_logic": "Passthrough",
+            })
+    return rows
+
+
+def _parse_sttm_rows(raw_content: object) -> list[dict]:
+    if not isinstance(raw_content, str):
+        return []
+    text = raw_content.strip()
+    if "```json" in text:
+        text = text.split("```json", 1)[1].split("```", 1)[0]
+    elif "```" in text:
+        text = text.split("```", 1)[1].split("```", 1)[0]
+
+    candidates = []
+    array_start, array_end = text.find("["), text.rfind("]")
+    if array_start != -1 and array_end > array_start:
+        candidates.append(text[array_start:array_end + 1])
+    object_start, object_end = text.find("{"), text.rfind("}")
+    if object_start != -1 and object_end > object_start:
+        candidates.append(text[object_start:object_end + 1])
+
+    for candidate in candidates:
+        try:
+            parsed = json.loads(candidate)
+        except (json.JSONDecodeError, TypeError, ValueError):
+            continue
+        if isinstance(parsed, dict):
+            parsed = next(
+                (parsed.get(key) for key in ("rows", "mappings", "sttm") if isinstance(parsed.get(key), list)),
+                [],
+            )
+        if isinstance(parsed, list):
+            return [row for row in parsed if isinstance(row, dict)]
+    return []
+
+
+def _merge_silver_sttm_rows(safe_rows: list[dict], ai_rows: list[dict]) -> list[dict]:
+    recommendations = {}
+    for row in ai_rows:
+        source_table = row.get("source_table")
+        source_column = row.get("source_column")
+        transformation_type = row.get("transformation_type")
+        transformation_logic = row.get("transformation_logic")
+        if not all(isinstance(value, str) for value in (
+            source_table, source_column, transformation_type, transformation_logic
+        )):
+            continue
+        if not source_column.strip() or not transformation_logic.strip():
+            continue
+        recommendations[(source_table.strip(), source_column.strip())] = {
+            "transformation_type": transformation_type.strip() or "Direct",
+            "transformation_logic": transformation_logic.strip(),
+        }
+
+    merged_rows = []
+    for safe_row in safe_rows:
+        key = (safe_row["source_table"], safe_row["source_column"])
+        recommendation = recommendations.get(key)
+        safe_logic = safe_row["transformation_logic"].lower()
+        recommended_logic = recommendation["transformation_logic"].lower() if recommendation else ""
+        cast_categories = {
+            "date": ("date", "timestamp", "datetime"),
+            "integer": ("integer", "int64", "int32"),
+            "decimal": ("decimal", "float", "double", "numeric"),
+            "text": ("text", "string"),
+        }
+        safe_category = next(
+            (category for category, tokens in cast_categories.items() if any(token in safe_logic for token in tokens)),
+            None,
+        )
+        conflicting_cast = bool(
+            safe_category
+            and any(
+                category != safe_category and any(token in recommended_logic for token in tokens)
+                for category, tokens in cast_categories.items()
+            )
+        )
+        if recommendation and safe_row["source_column"] and not conflicting_cast:
+            merged_rows.append({**safe_row, **recommendation})
+        else:
+            merged_rows.append(safe_row)
+    return merged_rows
+
+
 def _extract_sttm_rows(result: dict) -> list[dict]:
     """Scan agent message history (reverse order) for a JSON array of STTM rows."""
     for msg in reversed(result.get("messages", [])):
@@ -211,11 +372,7 @@ def _extract_sttm_rows(result: dict) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def _make_llm():
-    if LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+    return make_llm()
 
 
 # ---------------------------------------------------------------------------
@@ -322,49 +479,32 @@ def _make_sttm_tools(
             return json.dumps({"error": "No bronze_output_paths/bronze_sttm_path available for Silver STTM"})
 
         context = _prepare_silver_context(bronze_output_paths, bronze_sttm_path)
-
-        # Build a concise summary of the Bronze metadata (filenames + columns)
-        try:
-            context_summary = "\n".join(
-                f"Table: {t['filename']} | columns: {', '.join(t.get('columns', []))}"
-                for t in context
-            )
-        except Exception:
-            context_summary = "(unable to summarise bronze metadata)"
-
-        # Silver is intent-agnostic: apply standard cleansing to every Bronze column.
-        # Keep the prompt compact and avoid characters or phrasing that could be
-        # interpreted as a function/tool call by the provider.
+        safe_rows = _build_silver_sttm_rows(context)
+        context_summary = json.dumps([
+            {
+                "source_table": Path(str(table.get("filename", ""))).stem,
+                "columns": table.get("columns", []),
+                "dtypes": table.get("dtypes", {}),
+                "sample": table.get("sample", [])[:2],
+            }
+            for table in context
+        ], default=str)
         inner_prompt = (
-            "Generate a complete Silver STTM as a JSON array of rows.\n"
-            "Context (tables and columns):\n"
-            f"{context_summary[:3000]}\n\n"
-            "Constraints:\n"
-            "- Silver maps EVERY Bronze column; do NOT filter or prioritise.\n"
-            "- First row must be the surrogate key: source_column='', target_column='pk_<stem>_silver_id', "
-            "transformation_type='Indirect', transformation_logic='Auto-generated sequential surrogate primary key starting from 1'.\n"
-            "- Apply null handling, type casting, deduplication, and date standardisation. For id columns: type casting only.\n"
-            "Output format instructions:\n"
-            "- Return ONLY a valid JSON array (e.g. [{...}, {...}]).\n"
-            "- Each row must include these fields: source_schema, source_table, source_column, target_schema, target_table, target_column, transformation_type, transformation_logic.\n"
-            "- Do NOT include markdown fences, prose, or any function/tool-call-like syntax.\n"
-            "- Do NOT include run_id, file paths, or other metadata in the JSON rows.\n"
+            "Recommend Silver cleansing rules for every listed Bronze column. Return only a "
+            "valid JSON array. Each row must contain string fields source_table, source_column, "
+            "transformation_type, and transformation_logic. Use source_table exactly as supplied. "
+            "Choose runtime-safe pandas-compatible logic: date standardization, integer/decimal "
+            "casting, null handling, text casting, and trimming. Do not create, rename, or omit "
+            "columns; do not include the surrogate key.\nContext:\n"
+            f"{context_summary[:4500]}"
         )
-        llm = _make_llm()
-        response = llm.invoke(inner_prompt)
-        raw = response.content if hasattr(response, "content") else str(response)
-        if "```json" in raw:
-            raw = raw.split("```json")[1].split("```")[0]
-        elif "```" in raw:
-            raw = raw.split("```")[1].split("```")[0]
-        raw = raw.strip()
-        start, end = raw.find("["), raw.rfind("]")
-        rows = []
-        if start != -1 and end != -1:
-            try:
-                rows = json.loads(raw[start: end + 1])
-            except (json.JSONDecodeError, ValueError):
-                rows = []
+        ai_rows = []
+        try:
+            response = _make_llm().invoke(inner_prompt)
+            ai_rows = _parse_sttm_rows(getattr(response, "content", response))
+        except Exception as error:
+            print(f"[STTM] Silver AI recommendations unavailable; using safe mappings: {error}")
+        rows = _merge_silver_sttm_rows(safe_rows, ai_rows)
 
         sttm_path = str(STTM_DIR / f"sttm_silver_{run_id[:8]}.csv")
         pd.DataFrame(rows).to_csv(sttm_path, index=False)
@@ -412,19 +552,10 @@ def _make_sttm_tools(
         )
         llm = _make_llm()
         response = llm.invoke(inner_prompt)
-        raw = response.content if hasattr(response, "content") else str(response)
-        if "```json" in raw:
-            raw = raw.split("```json")[1].split("```")[0]
-        elif "```" in raw:
-            raw = raw.split("```")[1].split("```")[0]
-        raw = raw.strip()
-        start, end = raw.find("["), raw.rfind("]")
-        rows = []
-        if start != -1 and end != -1:
-            try:
-                rows = json.loads(raw[start: end + 1])
-            except (json.JSONDecodeError, ValueError):
-                rows = []
+        rows = _parse_sttm_rows(getattr(response, "content", response))
+        if not rows:
+            print("[STTM] Gold AI mappings were invalid; using complete passthrough mappings")
+            rows = _build_gold_sttm_rows(context)
 
         sttm_path = str(STTM_DIR / f"sttm_gold_{run_id[:8]}.csv")
         pd.DataFrame(rows).to_csv(sttm_path, index=False)
@@ -449,43 +580,34 @@ def _run_sttm_agent(
     audit_kwargs: dict,
     expected_filename_fragment: str,
 ) -> str:
-    """Instantiate the unified STTM agent, invoke it, extract and return STTM path."""
+    """Invoke the focused layer generator directly and return its validated STTM path."""
     trace = AgentTrace(trace_name, run_id)
     trace.set_input(**audit_kwargs)
 
     audit = AuditLogger(run_id)
     audit.log("sttm_generator", audit_action, **audit_kwargs)
 
-    llm = _make_llm()
-    agent = create_agent(llm, tools, system_prompt=STTM_AGENT_PROMPT)
+    if "bronze" in expected_filename_fragment:
+        generation_tool = tools[1]
+    elif "silver" in expected_filename_fragment:
+        generation_tool = tools[2]
+    else:
+        generation_tool = tools[3]
 
     try:
-        result = agent.invoke({"messages": [HumanMessage(content=task_description)]})
+        result = json.loads(generation_tool.invoke({}))
+        if result.get("error"):
+            raise RuntimeError(result["error"])
+        sttm_path = result.get("sttm_path", "")
+        row_count = int(result.get("row_count", 0))
+        if row_count <= 0 or not sttm_path or not Path(sttm_path).is_file():
+            raise RuntimeError(f"STTM generation produced no valid rows for {trace_name}")
     except Exception as e:
         trace.fail(str(e))
         raise
 
-    messages = result.get("messages", [])
-    trace.extract_from_messages(messages)
-
-    # Primary: path captured by the generation tool via scratchpad
-    sttm_path = scratchpad.get("sttm_path", "")
-
-    # Fallback: scan messages for the path string if scratchpad was not populated
-    if not sttm_path:
-        for msg in reversed(messages):
-            content = getattr(msg, "content", "")
-            if isinstance(content, str) and expected_filename_fragment in content:
-                try:
-                    parsed = json.loads(content)
-                    if isinstance(parsed, dict) and "sttm_path" in parsed:
-                        sttm_path = parsed["sttm_path"]
-                        break
-                except (json.JSONDecodeError, ValueError):
-                    pass
-
     audit.log("sttm_generator", audit_action.replace("started", "completed"), output_file=sttm_path)
-    trace.set_output(sttm_path=sttm_path).complete()
+    trace.set_output(sttm_path=sttm_path, row_count=row_count).complete()
     return sttm_path
 
 

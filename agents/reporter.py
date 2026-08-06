@@ -1,4 +1,4 @@
-"""Reporting AI agent — fully autonomous ReAct version.
+"""Bounded two-request reporting pipeline.
 
 The agent receives a goal from the orchestrator, inspects available Gold tables
 first to understand their schemas, forms an analytical plan, writes and executes
@@ -8,6 +8,7 @@ I/O contract (UNCHANGED — UI and orchestrator safe):
     generate_report(gold_files, business_intent, run_id, task_description) -> str
 """
 
+import html
 import json
 import pandas as pd
 import duckdb
@@ -19,6 +20,7 @@ from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from core.config import LLM_PROVIDER, GROQ_API_KEY, GROQ_MODEL, GOOGLE_API_KEY, GEMINI_MODEL, REPORTS_DIR
 from core.audit import AuditLogger
+from core.llm import make_llm
 from core.observability import AgentTrace
 from core.memory import store_document
 
@@ -119,6 +121,29 @@ def _inspect_gold_tables(gold_files: list[str]) -> dict:
     return summary
 
 
+def _enrich_entity_labels(result_df: pd.DataFrame, source_dfs: list[pd.DataFrame]) -> pd.DataFrame:
+    enriched = result_df.copy()
+    for id_column in [column for column in enriched.columns if str(column).endswith("_id")]:
+        name_column = f"{str(id_column)[:-3]}_name"
+        if name_column in enriched.columns:
+            continue
+
+        mapping_parts = [
+            source_df[[id_column, name_column]].dropna().drop_duplicates()
+            for source_df in source_dfs
+            if id_column in source_df.columns and name_column in source_df.columns
+        ]
+        if not mapping_parts:
+            continue
+
+        mapping = pd.concat(mapping_parts, ignore_index=True).drop_duplicates()
+        unambiguous_ids = mapping.groupby(id_column)[name_column].nunique()
+        mapping = mapping[mapping[id_column].isin(unambiguous_ids[unambiguous_ids == 1].index)]
+        mapping = mapping.drop_duplicates(subset=[id_column])
+        enriched = enriched.merge(mapping, on=id_column, how="left", sort=False)
+    return enriched
+
+
 def generate_chart_from_spec(df: pd.DataFrame, chart_spec: dict, chart_id: int) -> str:
     """Render a single Plotly chart from an LLM-specified chart spec dict. Returns embedded HTML."""
     try:
@@ -189,6 +214,107 @@ def _extract_analysis(result: dict) -> dict:
     return {}
 
 
+def _normalize_analysis(analysis: dict, business_intent: str) -> dict:
+    direct_answer = analysis.get("direct_answer")
+    if isinstance(direct_answer, str):
+        direct_answer = {"question": business_intent, "answer": direct_answer}
+    elif not isinstance(direct_answer, dict):
+        direct_answer = {}
+
+    charts = analysis.get("charts", [])
+    if not isinstance(charts, list):
+        charts = []
+
+    detailed_analysis = analysis.get("detailed_analysis", "No additional analysis provided.")
+    if not isinstance(detailed_analysis, str):
+        detailed_analysis = json.dumps(detailed_analysis, default=str)
+
+    return {
+        **analysis,
+        "direct_answer": direct_answer,
+        "charts": [chart for chart in charts if isinstance(chart, dict)],
+        "detailed_analysis": detailed_analysis,
+    }
+
+
+def _format_metric(value: object) -> str:
+    if pd.isna(value):
+        return "N/A"
+    if isinstance(value, (int, float)):
+        return f"{value:,.2f}".rstrip("0").rstrip(".")
+    return str(value)
+
+
+def _build_data_driven_analysis(
+    result_df: pd.DataFrame,
+    business_intent: str,
+    query_code: str,
+) -> dict:
+    row_count, column_count = result_df.shape
+    numeric_columns = [
+        column for column in result_df.columns
+        if pd.api.types.is_numeric_dtype(result_df[column])
+    ]
+    category_columns = [
+        column for column in result_df.columns
+        if column not in numeric_columns and not pd.api.types.is_datetime64_any_dtype(result_df[column])
+    ]
+
+    evidence = [f"The query returned {row_count:,} records across {column_count:,} fields."]
+    details = [
+        f"The result contains {row_count:,} records with these fields: "
+        f"{', '.join(map(str, result_df.columns))}."
+    ]
+
+    for column in numeric_columns[:3]:
+        values = pd.to_numeric(result_df[column], errors="coerce").dropna()
+        if values.empty:
+            continue
+        summary = (
+            f"{column} totals {_format_metric(values.sum())}, averages "
+            f"{_format_metric(values.mean())}, and ranges from "
+            f"{_format_metric(values.min())} to {_format_metric(values.max())}."
+        )
+        details.append(summary)
+        if len(evidence) == 1:
+            evidence.append(summary)
+
+    for column in category_columns[:2]:
+        counts = result_df[column].dropna().astype(str).value_counts()
+        if counts.empty:
+            continue
+        details.append(
+            f"The most frequent {column} value is {counts.index[0]} "
+            f"with {int(counts.iloc[0]):,} records."
+        )
+
+    charts = []
+    if category_columns and numeric_columns:
+        charts.append({
+            "type": "bar",
+            "title": f"{numeric_columns[0]} by {category_columns[0]}",
+            "x_column": category_columns[0],
+            "y_column": numeric_columns[0],
+        })
+    elif category_columns:
+        charts.append({
+            "type": "bar",
+            "title": f"Records by {category_columns[0]}",
+            "x_column": category_columns[0],
+        })
+
+    return {
+        "direct_answer": {
+            "question": business_intent,
+            "answer": " ".join(evidence),
+            "why": "This summary is calculated directly from the executed query result.",
+            "approach": f"Executed the report query and profiled its returned data: {query_code}",
+        },
+        "charts": charts,
+        "detailed_analysis": " ".join(details),
+    }
+
+
 # ---------------------------------------------------------------------------
 # Tool factory
 # ---------------------------------------------------------------------------
@@ -217,8 +343,10 @@ def _make_reporter_tools(gold_files: list[str], run_id: str):
         to write a precise SQL query. Call this before execute_query_tool.
         """
         catalog: dict = {}
+        source_dfs = []
         for fp in gold_files:
             df = pd.read_parquet(fp)
+            source_dfs.append(df)
             stem = Path(fp).stem.replace("-", "_").replace(" ", "_")
             conn.register(stem, df)
             catalog[stem] = {
@@ -229,6 +357,7 @@ def _make_reporter_tools(gold_files: list[str], run_id: str):
                 "row_count": len(df),
             }
         scratchpad["catalog"] = catalog
+        scratchpad["source_dfs"] = source_dfs
         return json.dumps(catalog, default=str)
 
     @tool
@@ -241,6 +370,7 @@ def _make_reporter_tools(gold_files: list[str], run_id: str):
         """
         try:
             result_df = conn.execute(sql_query).fetchdf()
+            result_df = _enrich_entity_labels(result_df, scratchpad.get("source_dfs", []))
             scratchpad["result_df"] = result_df
             scratchpad["sql_query"] = sql_query
             return json.dumps(result_df.head(100).to_dict(orient="records"), default=str)
@@ -255,11 +385,7 @@ def _make_reporter_tools(gold_files: list[str], run_id: str):
 # ---------------------------------------------------------------------------
 
 def _make_llm():
-    if LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+    return make_llm()
 
 
 # ---------------------------------------------------------------------------
@@ -301,27 +427,52 @@ def generate_report(
     inspect_tool, load_tool, query_tool, scratchpad, conn = _make_reporter_tools(gold_files, run_id)
     llm = _make_llm()
 
-    print(f"[REPORTER] Running autonomous ReAct agent ({LLM_PROVIDER})")
-    agent = create_agent(
-        llm,
-        [inspect_tool, load_tool, query_tool],
-        system_prompt=REPORTER_AGENT_PROMPT,
-    )
-
     try:
-        result = agent.invoke({"messages": [HumanMessage(content=task_description)]})
+        catalog_text = load_tool.invoke({})
+        catalog = json.loads(catalog_text)
+        sql_prompt = (
+            "Return only JSON with one key, sql_query. Write one DuckDB SELECT query "
+            "that directly answers the business question. Use only exact table and column "
+            "names from the catalog, quote identifiers, and never invent a name.\n"
+            f"Question: {business_intent}\nCatalog: {catalog_text[:4500]}"
+        )
+        sql_response = llm.invoke(sql_prompt)
+        sql_text = sql_response.content if isinstance(sql_response.content, str) else ""
+        if "```json" in sql_text:
+            sql_text = sql_text.split("```json")[1].split("```")[0]
+        sql_query = json.loads(sql_text).get("sql_query", "")
+        if not sql_query:
+            raise RuntimeError("Reporter did not produce a SQL query")
+
+        query_result_text = query_tool.invoke({"sql_query": sql_query})
+        query_result = json.loads(query_result_text)
+        if isinstance(query_result, dict) and query_result.get("error"):
+            first_table = next(iter(catalog), "")
+            if not first_table:
+                raise RuntimeError(query_result["error"])
+            query_result_text = query_tool.invoke(
+                {"sql_query": f'SELECT * FROM "{first_table}" LIMIT 100'}
+            )
+
+        analysis_prompt = (
+            "Return only one compact valid JSON object under 700 words with this exact shape: "
+            '{"direct_answer":{"answer":"specific answer with numbers","approach":"method"},'
+            '"charts":[{"type":"bar","title":"title","x_column":"exact result column",'
+            '"y_column":"exact result column"}],"detailed_analysis":"evidence and insights"}. '
+            "Use only actual query-result columns and at most two charts. Prefer human-readable name "
+            "columns over ID columns in answers and chart labels; when both are available, present the "
+            "name first and include the ID parenthetically. Do not use markdown.\n"
+            f"Question: {business_intent}\nSQL: {scratchpad.get('sql_query', sql_query)}\n"
+            f"Results: {query_result_text[:5000]}"
+        )
+        analysis_response = llm.invoke(analysis_prompt)
+        analysis_result = _extract_analysis({"messages": [analysis_response]})
     except Exception as e:
         trace.fail(str(e))
-        conn.close()
         raise
     finally:
         conn.close()
 
-    messages = result.get("messages", [])
-    trace.extract_from_messages(messages)
-
-    # Extract structured analysis from agent message history
-    analysis_result = _extract_analysis(result)
     result_df: pd.DataFrame = scratchpad.get("result_df")  # type: ignore[assignment]
     query_code: str = scratchpad.get("sql_query", "-- No query executed")
 
@@ -334,16 +485,8 @@ def generate_report(
 
     # Fallback: agent response was not parseable as structured analysis
     if not analysis_result:
-        analysis_result = {
-            "direct_answer": {
-                "question": business_intent,
-                "answer": "Analysis could not be structured.",
-                "why": "Agent response did not contain a parseable JSON object.",
-                "approach": "N/A",
-            },
-            "charts": [],
-            "detailed_analysis": "No structured analysis available.",
-        }
+        analysis_result = _build_data_driven_analysis(result_df, business_intent, query_code)
+    analysis_result = _normalize_analysis(analysis_result, business_intent)
 
     print(f"[REPORTER] Query result: {result_df.shape[0]} rows x {result_df.shape[1]} columns")
 
@@ -357,10 +500,13 @@ def generate_report(
 
     direct_answer = analysis_result.get("direct_answer", {})
     detailed_analysis = analysis_result.get("detailed_analysis", "No additional analysis provided.")
+    answer_text = html.escape(str(direct_answer.get("answer", "No answer provided")))
+    approach_text = html.escape(str(direct_answer.get("approach", "No methodology provided")))
+    detailed_analysis_html = html.escape(str(detailed_analysis)).replace("\n", "<br>")
 
     answer_html = f"""
     <div class="answer-section">
-        <p>{direct_answer.get('answer', 'No answer provided')}</p>
+        <p>{answer_text}</p>
     </div>
     """
 
@@ -370,7 +516,7 @@ def generate_report(
         <h3>Query Code</h3>
         <pre class="code-block"><code>{query_code_escaped}</code></pre>
         <h3>Query Description</h3>
-        <p>{direct_answer.get('approach', 'No methodology provided')}</p>
+        <p>{approach_text}</p>
     </div>
     """
 
@@ -466,6 +612,10 @@ def generate_report(
             <div class="chart-container">
                 {charts_section}
             </div>
+        </div>
+        <div class="section">
+            <h2>Detailed Analysis</h2>
+            <p>{detailed_analysis_html}</p>
         </div>
         <div class="footer">
             <p>Generated by IDAMP (Intent-Driven Agentic Medallion Pipeline)</p>

@@ -1,0 +1,122 @@
+{
+  "files": [
+    "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+  ],
+  "datasets": {
+    "sample_sales": {
+      "file": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv",
+      "shape": {
+        "rows": 12,
+        "columns": 9
+      },
+      "columns": {
+        "sale_date": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "2024-01-15",
+            "2024-01-15",
+            "2024-01-16",
+            "2024-01-16",
+            "2024-01-17"
+          ]
+        },
+        "product_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "P001",
+            "P002",
+            "P003",
+            "P004",
+            "P005"
+          ]
+        },
+        "product_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "Laptop Pro",
+            "Office Chair",
+            "Smartphone X",
+            "Coffee Maker",
+            "Wireless Mouse"
+          ]
+        },
+        "category": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 5,
+          "sample_values": [
+            "Electronics",
+            "Furniture",
+            "Electronics",
+            "Home Appliances",
+            "Electronics"
+          ]
+        },
+        "store_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "S001",
+            "S002",
+            "S001",
+            "S003",
+            "S002"
+          ]
+        },
+        "store_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "Downtown",
+            "Uptown",
+            "Downtown",
+            "Suburb",
+            "Uptown"
+          ]
+        },
+        "quantity": {
+          "dtype": "int64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 11,
+          "min": 1.0,
+          "max": 20.0,
+          "mean": 6.666666666666667
+        },
+        "unit_price": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 3.49,
+          "max": 1299.99,
+          "mean": 255.24166666666665
+        },
+        "total_amount": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 69.8,
+          "max": 2699.97,
+          "mean": 744.6525
+        }
+      }
+    }
+  },
+  "analysis": {}
+}

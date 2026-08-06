@@ -1,0 +1,167 @@
+{
+  "files": [
+    "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+  ],
+  "datasets": {
+    "sample_sales": {
+      "file": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv",
+      "shape": {
+        "rows": 12,
+        "columns": 9
+      },
+      "columns": {
+        "sale_date": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 10,
+          "sample_values": [
+            "2024-01-15",
+            "2024-01-15",
+            "2024-01-16",
+            "2024-01-16",
+            "2024-01-17"
+          ]
+        },
+        "product_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "P001",
+            "P002",
+            "P003",
+            "P004",
+            "P005"
+          ]
+        },
+        "product_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "sample_values": [
+            "Laptop Pro",
+            "Office Chair",
+            "Smartphone X",
+            "Coffee Maker",
+            "Wireless Mouse"
+          ]
+        },
+        "category": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 5,
+          "sample_values": [
+            "Electronics",
+            "Furniture",
+            "Electronics",
+            "Home Appliances",
+            "Electronics"
+          ]
+        },
+        "store_id": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "S001",
+            "S002",
+            "S001",
+            "S003",
+            "S002"
+          ]
+        },
+        "store_name": {
+          "dtype": "str",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 3,
+          "sample_values": [
+            "Downtown",
+            "Uptown",
+            "Downtown",
+            "Suburb",
+            "Uptown"
+          ]
+        },
+        "quantity": {
+          "dtype": "int64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 11,
+          "min": 1.0,
+          "max": 20.0,
+          "mean": 6.666666666666667
+        },
+        "unit_price": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 3.49,
+          "max": 1299.99,
+          "mean": 255.24166666666665
+        },
+        "total_amount": {
+          "dtype": "float64",
+          "null_count": 0,
+          "null_pct": 0.0,
+          "unique_count": 12,
+          "min": 69.8,
+          "max": 2699.97,
+          "mean": 744.6525
+        }
+      }
+    }
+  },
+  "analysis": {
+    "semantic_meanings": {
+      "sample_sales": {
+        "sale_date": "transaction date (string, YYYY-MM-DD)",
+        "product_id": "unique product identifier",
+        "product_name": "descriptive product name",
+        "category": "product category classification",
+        "store_id": "unique store identifier",
+        "store_name": "descriptive store name",
+        "quantity": "number of units sold",
+        "unit_price": "price per unit at time of sale",
+        "total_amount": "total revenue for the line (quantity * unit_price)"
+      }
+    },
+    "join_keys": [
+      {
+        "left_dataset": "sample_sales",
+        "left_column": "product_id",
+        "right_dataset": "PRODUCT_DIMENSION",
+        "right_column": "product_id",
+        "confidence": "high"
+      },
+      {
+        "left_dataset": "sample_sales",
+        "left_column": "store_id",
+        "right_dataset": "STORE_DIMENSION",
+        "right_column": "store_id",
+        "confidence": "high"
+      },
+      {
+        "left_dataset": "sample_sales",
+        "left_column": "sale_date",
+        "right_dataset": "DATE_DIMENSION",
+        "right_column": "date_key",
+        "confidence": "medium"
+      }
+    ],
+    "quality_notes": [
+      "No missing values across all columns (null_pct = 0%).",
+      "sale_date is stored as string; consider converting to proper date datatype for temporal queries.",
+      "product_id and store_id appear to be surrogate keys suitable for dimension joins.",
+      "total_amount is fully consistent with quantity * unit_price in this sample; monitor for drift in larger data.",
+      "category has low cardinality (5 distinct values) \u2013 useful for aggregation.",
+      "store_id and store_name have matching cardinalities, indicating a one\u2011to\u2011one relationship."
+    ]
+  }
+}

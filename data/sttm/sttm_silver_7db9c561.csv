@@ -1,0 +1,13 @@
+source_schema,source_table,target_schema,target_table,source_column,target_column,transformation_type,transformation_logic
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,,pk_sample_sales_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,sale_date,sale_date,null handling,pd.notnull('sale_date')
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,product_id,product_id,Direct,"Fill null with default empty string, cast to text, and trim whitespace"
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,product_name,product_name,trimming,pd.Series('product_name').str.strip()
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,category,category,trimming,pd.Series('category').str.strip()
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,store_id,store_id,Direct,"Fill null with default empty string, cast to text, and trim whitespace"
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,store_name,store_name,trimming,pd.Series('store_name').str.strip()
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,quantity,quantity,Direct,Fill null with median and cast to integer
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,unit_price,unit_price,decimal casting,"pd.to_numeric('unit_price', downcast='float')"
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,total_amount,total_amount,decimal casting,"pd.to_numeric('total_amount', downcast='float')"
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,_load_timestamp,_load_timestamp,Direct,Cast to timestamp
+Bronze,sample_sales_bronze,Silver,sample_sales_silver,_source_file,_source_file,Direct,"Fill null with default empty string, cast to text, and trim whitespace"

@@ -1,0 +1,15 @@
+{
+  "direct_answer": {
+    "answer": "Downtown",
+    "approach": "SQL query with ORDER BY and LIMIT 1"
+  },
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Top Store by Total Sales",
+      "x_column": "store_name",
+      "y_column": "total_amount"
+    }
+  ],
+  "detailed_analysis": "The SQL query joins the sales and stores tables on the store_id column, sorts the results by total_amount in descending order, and limits the output to the top row. This approach ensures that the store with the highest total sales amount is returned."
+}

@@ -1,0 +1,382 @@
+[
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:34:46.326886+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-9\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 3
+    },
+    "duration_seconds": 69.52,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:39:19.355470+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-13\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 3
+    },
+    "duration_seconds": 67.491,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:40:48.427727+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-15\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-15\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:39:54.290173+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-14\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-14\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 3
+    },
+    "duration_seconds": 67.411,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:45:10.585382+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.012,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T10:54:32.901658+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:05:08.222390+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:09:58.919844+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:10:09.093731+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.009,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:10:16.499844+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:22:12.444420+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:51:26.773840+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-38\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-38\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.033,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:51:45.990162+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-39\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-39\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T11:52:22.089687+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.016,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T12:01:22.353737+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.013,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T12:02:24.701013+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.012,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T12:02:43.362233+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T12:21:23.461219+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.011,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_gold",
+    "run_id": "run-g1",
+    "started_at": "2026-08-06T12:21:57.136374+00:00",
+    "input": {
+      "silver_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_saves_csv_and_returns_pat2\\silver.parquet"
+      ],
+      "business_intent": "intent"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_saves_csv_and_returns_pat2\\sttm_gold_run-g1.csv",
+      "row_count": 1
+    },
+    "duration_seconds": 0.01,
+    "status": "success"
+  }
+]

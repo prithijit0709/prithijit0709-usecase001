@@ -1,0 +1,22 @@
+[
+  {
+    "agent": "supervisor_phase1",
+    "run_id": "4379886d-127d-4b4a-8363-cf5cb2450b35",
+    "started_at": "2026-08-06T10:17:32.208153+00:00",
+    "input": {
+      "phase": "phase1",
+      "goal": "Phase 1 goal for run_id='4379886d-127d-4b4a-8363-cf5cb2450b35'.\n\nUploaded files: ['C:\\\\Users\\\\pusmajumdar\\\\Downloads\\\\pusmajumdar-UseCase-001\\\\data\\\\landing\\\\sample_sales.csv']\n\nYou need to accomplish two things in this phase:\n1. Profile the uploaded raw CSV files to understand their structure, column semantics, data quality, and potential join keys across datasets.\n2. Use that profile to generate a complete Bronze STTM CSV that covers every column with ingestion rules (renaming, type casting, metadata injection).\n\nBronze is intent-agnostic \u2014 map every column mechanically. Plan which tools to call and in what order. Verify each output before proceeding.",
+      "tools_available": [
+        "profiler_agent_tool",
+        "sttm_agent_tool"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 3.769,
+    "status": "failed",
+    "error": "Error code: 400 - {'error': {'message': '`tool calling` is not supported with this model', 'type': 'invalid_request_error', 'param': 'tool calling'}}"
+  }
+]

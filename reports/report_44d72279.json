@@ -1,0 +1,15 @@
+{
+  "direct_answer": {
+    "answer": "Downtown",
+    "approach": "SQL query with ORDER BY and LIMIT 1"
+  },
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Top Store by Total Sales",
+      "x_column": "store_name",
+      "y_column": "total_amount"
+    }
+  ],
+  "detailed_analysis": "The store with the highest total sales amount is Downtown, as seen in the bar chart. This result is consistent with the SQL query, which ordered the stores by total sales in descending order and returned the top store."
+}

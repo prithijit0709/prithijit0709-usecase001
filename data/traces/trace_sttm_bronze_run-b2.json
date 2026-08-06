@@ -1,0 +1,242 @@
+[
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T10:40:48.372637+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-15\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.004,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T10:45:10.487963+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-19\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.016,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T10:54:32.818372+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-20\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.021,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:05:08.122513+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-25\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:09:58.817778+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-28\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.015,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:10:09.040552+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-29\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.005,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:10:16.450062+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-30\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.004,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:22:12.396592+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-34\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:51:26.307355+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-38\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.033,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:51:45.873332+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-39\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T11:52:21.989259+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-40\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.0,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T12:01:22.204486+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-45\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.012,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T12:02:24.609050+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-46\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.005,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T12:02:43.265646+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-47\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.005,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T12:21:23.312224+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.005,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  },
+  {
+    "agent": "sttm_bronze",
+    "run_id": "run-b2",
+    "started_at": "2026-08-06T12:21:56.990497+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_rejects_empty_bronze_sttm0\\profile.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 0.004,
+    "status": "failed",
+    "error": "STTM generation produced no valid rows for sttm_bronze"
+  }
+]

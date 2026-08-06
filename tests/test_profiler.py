@@ -10,6 +10,30 @@ from unittest.mock import patch, MagicMock
 
 
 class TestProfiler:
+    def test_profiler_uses_one_direct_semantic_call(self, tmp_path, monkeypatch):
+        monkeypatch.setattr("agents.profiler.PROFILES_DIR", tmp_path)
+        csv_path = tmp_path / "sales.csv"
+        pd.DataFrame({"sale_id": [1, 2], "amount": [10.0, 20.0]}).to_csv(csv_path, index=False)
+        llm = MagicMock()
+        llm.invoke.return_value = MagicMock(
+            content=json.dumps({
+                "semantic_meanings": {"sale_id": "sale identifier"},
+                "join_keys": ["sale_id"],
+                "quality_notes": [],
+            })
+        )
+
+        with patch("agents.profiler.create_agent", side_effect=AssertionError("agent created")), \
+             patch("agents.profiler._make_llm", return_value=llm):
+            from agents.profiler import profile_multiple_datasets
+            result = profile_multiple_datasets([str(csv_path)], "run-direct", "Profile sales")
+
+        llm.invoke.assert_called_once()
+        with open(result, encoding="utf-8") as profile_file:
+            profile = json.load(profile_file)
+        assert "sales" in profile["datasets"]
+        assert profile["analysis"]["join_keys"] == ["sale_id"]
+
     def test_profile_dataset_creates_json(self, tmp_path, monkeypatch):
         monkeypatch.setattr("agents.profiler.PROFILES_DIR", tmp_path)
 
@@ -22,18 +46,19 @@ class TestProfiler:
         mock_response = MagicMock()
         mock_response.content = '{"id": "unique identifier", "name": "entity name", "value": "numeric measurement"}'
 
-        with patch("agents.profiler.ChatGoogleGenerativeAI") as mock_llm_class:
-            mock_llm_class.return_value.invoke.return_value = mock_response
-
+        mock_llm = MagicMock()
+        mock_llm.invoke.return_value = mock_response
+        with patch("agents.profiler._make_llm", return_value=mock_llm):
             from agents.profiler import profile_dataset
-            result = profile_dataset(str(csv_path), "test-run")
+            result = profile_dataset(str(csv_path), "test-run", "Profile test data")
 
         assert Path(result).exists()
         with open(result) as f:
             profile = json.load(f)
-        assert profile["shape"]["rows"] == 3
-        assert profile["shape"]["columns"] == 3
-        assert "id" in profile["columns"]
+        dataset = profile["datasets"]["test"]
+        assert dataset["shape"]["rows"] == 3
+        assert dataset["shape"]["columns"] == 3
+        assert "id" in dataset["columns"]
 
     def test_profile_multiple_datasets(self, tmp_path, monkeypatch):
         monkeypatch.setattr("agents.profiler.PROFILES_DIR", tmp_path)
@@ -47,11 +72,13 @@ class TestProfiler:
         mock_response = MagicMock()
         mock_response.content = '```json\n{"semantic_meanings": {}, "join_keys": ["product_id"], "quality_notes": "ok"}\n```'
 
-        with patch("agents.profiler.ChatGoogleGenerativeAI") as mock_llm_class:
-            mock_llm_class.return_value.invoke.return_value = mock_response
-
+        mock_llm = MagicMock()
+        mock_llm.invoke.return_value = mock_response
+        with patch("agents.profiler._make_llm", return_value=mock_llm):
             from agents.profiler import profile_multiple_datasets
-            result = profile_multiple_datasets([str(csv1), str(csv2)], "test-run")
+            result = profile_multiple_datasets(
+                [str(csv1), str(csv2)], "test-run", "Profile test data"
+            )
 
         assert Path(result).exists()
         with open(result) as f:

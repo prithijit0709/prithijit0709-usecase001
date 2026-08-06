@@ -1,0 +1,13 @@
+sale_date,product_id,product_name,category,store_id,store_name,quantity,unit_price,total_amount
+2024-01-15,P001,Laptop Pro,Electronics,S001,Downtown,2,1299.99,2599.98
+2024-01-15,P002,Office Chair,Furniture,S002,Uptown,5,249.99,1249.95
+2024-01-16,P003,Smartphone X,Electronics,S001,Downtown,3,899.99,2699.97
+2024-01-16,P004,Coffee Maker,Home Appliances,S003,Suburb,4,79.99,319.96
+2024-01-17,P005,Wireless Mouse,Electronics,S002,Uptown,10,29.99,299.90
+2024-01-18,P006,Desk Lamp,Furniture,S003,Suburb,6,45.00,270.00
+2024-01-19,P007,Running Shoes,Sports,S001,Downtown,7,89.50,626.50
+2024-01-20,P008,Water Bottle,Sports,S002,Uptown,12,14.99,179.88
+2024-01-21,P009,Blender,Home Appliances,S001,Downtown,2,129.99,259.98
+2024-01-22,P010,Notebook,Office Supplies,S003,Suburb,20,3.49,69.80
+2024-01-23,P011,Desk Organizer,Office Supplies,S002,Uptown,8,19.99,159.92
+2024-01-24,P012,Noise Cancelling Headphones,Electronics,S001,Downtown,1,199.99,199.99

@@ -1,0 +1,19 @@
+[
+  {
+    "agent": "sttm_bronze",
+    "run_id": "10bf62cc-2d14-45ba-8e8c-9ec821b9450e",
+    "started_at": "2026-08-06T10:57:08.578075+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\profiles\\profile_combined_20260806_162708.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_bronze_10bf62cc.csv",
+      "row_count": 9
+    },
+    "duration_seconds": 64.246,
+    "status": "success"
+  }
+]

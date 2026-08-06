@@ -1,0 +1,17 @@
+[
+  {
+    "agent": "sttm_bronze",
+    "run_id": "3a016c78-325a-4c40-92e6-d898f5b4735e",
+    "started_at": "2026-08-06T08:33:10.335701+00:00",
+    "input": {
+      "profile_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\profiles\\profile_combined_20260806_140251.json"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 33.973,
+    "status": "failed",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kzb0xfqaeexb3ck6c292g4sn` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5131, Requested 2643. Please try again in 17.74s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]

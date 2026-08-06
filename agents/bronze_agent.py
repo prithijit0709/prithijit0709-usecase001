@@ -1,4 +1,4 @@
-"""Bronze layer AI agent — fully autonomous ReAct version.
+"""Deterministic Bronze layer executor.
 
 The agent receives a high-level goal from the orchestrator, uses
 inspect_task_tool to understand the files and STTM rules first, forms an
@@ -17,6 +17,7 @@ from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 from core.config import BRONZE_DIR, LLM_PROVIDER, GROQ_API_KEY, GROQ_MODEL, GOOGLE_API_KEY, GEMINI_MODEL
 from core.audit import AuditLogger
+from core.llm import make_llm
 from core.observability import AgentTrace
 
 
@@ -208,11 +209,7 @@ def _make_bronze_tools(input_files: list[str], sttm_path: str, run_id: str):
 # ---------------------------------------------------------------------------
 
 def _make_llm():
-    if LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(api_key=GROQ_API_KEY, model=GROQ_MODEL)
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    return ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY, model=GEMINI_MODEL)
+    return make_llm()
 
 
 # ---------------------------------------------------------------------------
@@ -225,7 +222,7 @@ def execute_bronze(
     run_id: str,
     task_description: str,
 ) -> list[str]:
-    """Bronze AI agent entry point — autonomous ReAct version.
+    """Execute approved Bronze rules deterministically.
 
     The agent inspects input files and STTM rules, forms an explicit plan,
     then executes ingestion across all input files.
@@ -242,33 +239,11 @@ def execute_bronze(
     trace = AgentTrace("bronze_agent", run_id)
     trace.set_input(input_files=input_files, sttm_path=sttm_path)
 
-    inspect_tool, ingestion_tool = _make_bronze_tools(input_files, sttm_path, run_id)
-    llm = _make_llm()
-
-    print(f"[BRONZE] Running autonomous ReAct agent ({LLM_PROVIDER})")
-    agent = create_agent(llm, [inspect_tool, ingestion_tool], system_prompt=BRONZE_AGENT_PROMPT)
-
     try:
-        result = agent.invoke({"messages": [HumanMessage(content=task_description)]})
+        output_paths = _apply_bronze_rules(input_files, sttm_path, run_id)
     except Exception as e:
         trace.fail(str(e))
         raise
-
-    messages = result.get("messages", [])
-    trace.extract_from_messages(messages)
-
-    # Extract output paths from tool result messages (unchanged logic)
-    output_paths: list[str] = []
-    for msg in reversed(messages):
-        content = getattr(msg, "content", "")
-        if isinstance(content, str):
-            try:
-                parsed = json.loads(content)
-                if isinstance(parsed, list) and all(isinstance(p, str) for p in parsed):
-                    output_paths = parsed
-                    break
-            except (json.JSONDecodeError, ValueError):
-                continue
 
     trace.set_output(output_paths=output_paths).complete()
     return output_paths

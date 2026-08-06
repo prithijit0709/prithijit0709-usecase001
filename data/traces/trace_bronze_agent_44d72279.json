@@ -1,0 +1,23 @@
+[
+  {
+    "agent": "bronze_agent",
+    "run_id": "44d72279-8b17-46cb-b4db-29dc3eeada18",
+    "started_at": "2026-08-06T14:46:01.447532+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\PriChoudhury\\Documents\\Prithijit_ACCL_WITH_AI_PROJ\\prithijit0709-UseCase-001\\data\\landing\\sample_sales.csv"
+      ],
+      "sttm_path": "C:\\Users\\PriChoudhury\\Documents\\Prithijit_ACCL_WITH_AI_PROJ\\prithijit0709-UseCase-001\\data\\sttm\\sttm_bronze_44d72279.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": [
+        "C:\\Users\\PriChoudhury\\Documents\\Prithijit_ACCL_WITH_AI_PROJ\\prithijit0709-UseCase-001\\data\\bronze_layer\\sample_sales_bronze.parquet"
+      ]
+    },
+    "duration_seconds": 0.595,
+    "status": "success"
+  }
+]

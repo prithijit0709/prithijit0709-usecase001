@@ -141,6 +141,15 @@ class TestApplyBronzeRules:
 
 class TestExecuteBronze:
 
+    def test_execute_bronze_does_not_use_llm(self):
+        from agents.bronze_agent import execute_bronze
+
+        with patch("agents.bronze_agent._make_llm", side_effect=AssertionError("LLM called")), \
+             patch("agents.bronze_agent._apply_bronze_rules", return_value=["bronze.parquet"]):
+            results = execute_bronze(["input.csv"], "sttm.csv", "run-direct", "execute")
+
+        assert results == ["bronze.parquet"]
+
     def test_execute_bronze_returns_paths(self, tmp_path, monkeypatch):
         monkeypatch.setattr("agents.bronze_agent.BRONZE_DIR", tmp_path)
         csv_path = tmp_path / "test.csv"
@@ -160,48 +169,3 @@ class TestExecuteBronze:
         assert isinstance(results, list)
         assert len(results) == 1
 
-    def test_execute_bronze_accepts_task_description(self, tmp_path, monkeypatch):
-        monkeypatch.setattr("agents.bronze_agent.BRONZE_DIR", tmp_path)
-        csv_path = tmp_path / "test.csv"
-        pd.DataFrame({"id": [1]}).to_csv(csv_path, index=False)
-        sttm_path = _make_sttm_csv(tmp_path)
-
-        captured_messages = []
-
-        def fake_create_agent(llm, tools, system_prompt):
-            mock_agent = MagicMock()
-            def fake_invoke(inputs):
-                captured_messages.extend(inputs["messages"])
-                tool_result = tools[0].invoke({})
-                ai_msg = MagicMock()
-                ai_msg.content = tool_result
-                return {"messages": [ai_msg]}
-            mock_agent.invoke.side_effect = fake_invoke
-            return mock_agent
-
-        from agents.bronze_agent import execute_bronze
-        with patch("agents.bronze_agent.create_agent", side_effect=fake_create_agent), \
-             patch("agents.bronze_agent.AuditLogger"):
-            execute_bronze([str(csv_path)], str(sttm_path), "run-11", task_description="custom task")
-
-        assert any("custom task" in str(getattr(m, "content", "")) for m in captured_messages)
-
-    def test_execute_bronze_uses_system_prompt(self, tmp_path, monkeypatch):
-        monkeypatch.setattr("agents.bronze_agent.BRONZE_DIR", tmp_path)
-        csv_path = tmp_path / "test.csv"
-        pd.DataFrame({"id": [1]}).to_csv(csv_path, index=False)
-        sttm_path = _make_sttm_csv(tmp_path)
-
-        captured_prompt = []
-
-        def fake_create_agent(llm, tools, system_prompt):
-            captured_prompt.append(system_prompt)
-            return _mock_agent_that_calls_tool(tools[0])
-
-        from agents.bronze_agent import execute_bronze, BRONZE_AGENT_PROMPT
-        with patch("agents.bronze_agent.create_agent", side_effect=fake_create_agent), \
-             patch("agents.bronze_agent.AuditLogger"):
-            execute_bronze([str(csv_path)], str(sttm_path), "run-12",
-                           task_description="Ingest for run-12.")
-
-        assert captured_prompt[0] == BRONZE_AGENT_PROMPT

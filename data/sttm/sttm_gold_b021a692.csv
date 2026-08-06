@@ -1,0 +1,15 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+silver,sales,,gold,sales,pk_gold_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+silver,sales,sale_date,gold,sales,sale_date,Direct,
+silver,sales,product_id,gold,sales,product_id,Direct,
+silver,sales,product_name,gold,sales,product_name,Direct,
+silver,sales,category,gold,sales,category,Direct,
+silver,sales,store_id,gold,sales,store_id,Direct,
+silver,sales,store_name,gold,sales,store_name,Direct,
+silver,sales,quantity,gold,sales,quantity,Direct,
+silver,sales,unit_price,gold,sales,unit_price,Direct,
+silver,sales,total_amount,gold,sales,total_amount,Direct,
+silver,sales,store_id,gold,stores,store_id,Direct,
+silver,sales,store_name,gold,stores,store_name,Direct,
+silver,sales,store_id,gold,top_stores,store_id,Indirect,"Group by store_id, sum(total_amount)"
+silver,sales,total_amount,gold,top_stores,total_amount,Indirect,"Group by store_id, sum(total_amount)"

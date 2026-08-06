@@ -56,6 +56,38 @@ def _mock_agent_that_calls_tool(tool):
 
 class TestApplyGoldRules:
 
+    def test_sole_silver_input_resolves_unmatched_sttm_source(self, tmp_path, monkeypatch):
+        monkeypatch.setattr("agents.gold_agent.GOLD_DIR", tmp_path)
+        silver_path = tmp_path / "sample_sales_silver.parquet"
+        pd.DataFrame({"store_name": ["Central"], "total_amount": [125.5]}).to_parquet(
+            silver_path, index=False
+        )
+        sttm_path = _make_gold_sttm(tmp_path, [
+            {
+                "source_table": "sales",
+                "source_column": "store_name",
+                "target_column": "store_name",
+                "target_table": "sales",
+                "transformation_type": "Direct",
+                "transformation_logic": "Passthrough",
+            },
+            {
+                "source_table": "sales",
+                "source_column": "total_amount",
+                "target_column": "total_amount",
+                "target_table": "sales",
+                "transformation_type": "Direct",
+                "transformation_logic": "Passthrough",
+            },
+        ])
+
+        from agents.gold_agent import _apply_gold_rules
+        with patch("agents.gold_agent.AuditLogger"):
+            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "run-alias")
+
+        assert len(results) == 1
+        assert set(pd.read_parquet(results[0]).columns) >= {"store_name", "total_amount"}
+
     def test_output_written_for_each_target_table(self, tmp_path, monkeypatch):
         """One Gold Parquet is produced per distinct target_table in the STTM."""
         monkeypatch.setattr("agents.gold_agent.GOLD_DIR", tmp_path)
@@ -65,7 +97,7 @@ class TestApplyGoldRules:
 
         from agents.gold_agent import _apply_gold_rules
         with patch("agents.gold_agent.AuditLogger"):
-            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "analytics", "run-40")
+            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "run-40")
 
         assert len(results) >= 1
         df = pd.read_parquet(results[0])
@@ -80,7 +112,7 @@ class TestApplyGoldRules:
 
         from agents.gold_agent import _apply_gold_rules
         with patch("agents.gold_agent.AuditLogger"):
-            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "analytics", "run-41")
+            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "run-41")
 
         assert pd.read_parquet(results[0]) is not None
 
@@ -99,7 +131,7 @@ class TestApplyGoldRules:
 
         from agents.gold_agent import _apply_gold_rules
         with patch("agents.gold_agent.AuditLogger"):
-            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "analytics", "run-42")
+            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "run-42")
 
         assert len(results) == 2
 
@@ -115,7 +147,7 @@ class TestApplyGoldRules:
 
         from agents.gold_agent import _apply_gold_rules
         with patch("agents.gold_agent.AuditLogger"):
-            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "analytics", "run-43")
+            results = _apply_gold_rules([str(silver_path)], str(sttm_path), "run-43")
 
         df = pd.read_parquet(results[0])
         assert "keep" in df.columns
@@ -128,6 +160,15 @@ class TestApplyGoldRules:
 
 class TestExecuteGold:
 
+    def test_execute_gold_does_not_use_llm(self):
+        from agents.gold_agent import execute_gold
+
+        with patch("agents.gold_agent._make_llm", side_effect=AssertionError("LLM called")), \
+             patch("agents.gold_agent._apply_gold_rules", return_value=["gold.parquet"]):
+            results = execute_gold(["silver.parquet"], "sttm.csv", "run-direct", "execute")
+
+        assert results == ["gold.parquet"]
+
     def test_execute_gold_returns_paths(self, tmp_path, monkeypatch):
         """execute_gold must return a non-empty list of output paths."""
         monkeypatch.setattr("agents.gold_agent.GOLD_DIR", tmp_path)
@@ -137,41 +178,12 @@ class TestExecuteGold:
 
         from agents.gold_agent import execute_gold
 
-        def fake_create_agent(llm, tools, system_prompt):
-            return _mock_agent_that_calls_tool(tools[0])
-
-        with patch("agents.gold_agent.create_agent", side_effect=fake_create_agent), \
-             patch("agents.gold_agent.AuditLogger"):
-            results = execute_gold([str(silver_path)], str(sttm_path), "analytics", "run-50",
-                                   task_description="Materialise test files for run-50.")
+        with patch("agents.gold_agent.AuditLogger"):
+            results = execute_gold(
+                [str(silver_path)], str(sttm_path), "run-50", "Materialise test files."
+            )
 
         assert isinstance(results, list)
         assert len(results) >= 1
 
-    def test_execute_gold_forwards_task_description(self, tmp_path, monkeypatch):
-        """A custom task_description must reach the agent's HumanMessage."""
-        monkeypatch.setattr("agents.gold_agent.GOLD_DIR", tmp_path)
-        silver_path = tmp_path / "test_silver.parquet"
-        pd.DataFrame({"id": [1]}).to_parquet(silver_path, index=False)
-        sttm_path = _passthrough_sttm(tmp_path, columns=("id",))
-
-        captured = []
-
-        def fake_create_agent(llm, tools, system_prompt):
-            mock_agent = MagicMock()
-            def fake_invoke(inputs):
-                captured.extend(inputs["messages"])
-                result = tools[0].invoke({})
-                ai_msg = MagicMock()
-                ai_msg.content = result
-                return {"messages": [ai_msg]}
-            mock_agent.invoke.side_effect = fake_invoke
-            return mock_agent
-
-        from agents.gold_agent import execute_gold
-        with patch("agents.gold_agent.create_agent", side_effect=fake_create_agent), \
-             patch("agents.gold_agent.AuditLogger"):
-            execute_gold([str(silver_path)], str(sttm_path), "analytics", "run-51", task_description="custom gold task")
-
-        assert any("custom gold task" in str(getattr(m, "content", "")) for m in captured)
 

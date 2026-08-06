@@ -1,0 +1,20 @@
+[
+  {
+    "agent": "gold_agent",
+    "run_id": "52492592-421c-4a42-984d-b9936f3f21b6",
+    "started_at": "2026-08-06T08:19:19.889872+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\silver_layer\\sample_sales_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_gold_52492592.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {},
+    "duration_seconds": 1.611,
+    "status": "failed",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kzb0xfqaeexb3ck6c292g4sn` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98822, Requested 2096. Please try again in 13m13.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]

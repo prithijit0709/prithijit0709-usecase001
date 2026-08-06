@@ -202,6 +202,8 @@ def _prepare_sttm_editor_df(df: pd.DataFrame) -> pd.DataFrame:
     if SELECTION_COL not in editor_df.columns:
         editor_df.insert(0, SELECTION_COL, True)
     editor_df[SELECTION_COL] = editor_df[SELECTION_COL].fillna(True).astype(bool)
+    if "transformation_logic" in editor_df.columns:
+        editor_df["transformation_logic"] = editor_df["transformation_logic"].fillna("").astype(str)
     return editor_df
 
 
@@ -514,6 +516,9 @@ with main_col:
                         st.rerun()
         else:
             st.error("Bronze STTM file not found.")
+            if st.button("Start New Run", type="primary"):
+                _reset_analysis_session()
+                st.rerun()
 
 
     # ========== PHASE 3: SILVER STTM REVIEW ==========
@@ -645,4 +650,21 @@ with main_col:
                     st.rerun()
         else:
             st.error("Report file not found. Please check the pipeline execution.")
+            can_retry = bool(state.get("silver_output_paths") and state.get("sttm_gold_path"))
+            if st.button(
+                "Retry Gold Execution & Report",
+                type="primary",
+                disabled=not can_retry,
+                use_container_width=True,
+            ):
+                with st.spinner("Executing Gold layer and regenerating the report..."):
+                    result = run_gold_and_report(state)
+                    st.session_state.pipeline_state = result
+                    st.session_state.current_run_id = result.get(
+                        "run_id", st.session_state.current_run_id
+                    )
+                    if result.get("error"):
+                        st.error(f"Error: {result['error']}")
+                    else:
+                        st.rerun()
 

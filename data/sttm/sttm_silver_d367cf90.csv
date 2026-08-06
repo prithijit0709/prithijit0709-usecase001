@@ -1,0 +1,13 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+sample_sales_bronze,sample_sales_bronze,,sample_sales_silver,sample_sales_silver,pk_sample_sales_silver_id,Indirect,Auto-generated sequential surrogate primary key starting from 1
+sample_sales_bronze,sample_sales_bronze,sale_date,sample_sales_silver,sample_sales_silver,sale_date,Cast,Cast to date format: 'yyyy-MM-dd'
+sample_sales_bronze,sample_sales_bronze,product_id,sample_sales_silver,sample_sales_silver,product_id,Cast,Cast to integer
+sample_sales_bronze,sample_sales_bronze,product_name,sample_sales_silver,sample_sales_silver,product_name,Null Handling,Replace null values with empty string
+sample_sales_bronze,sample_sales_bronze,category,sample_sales_silver,sample_sales_silver,category,Null Handling,Replace null values with empty string
+sample_sales_bronze,sample_sales_bronze,store_id,sample_sales_silver,sample_sales_silver,store_id,Cast,Cast to integer
+sample_sales_bronze,sample_sales_bronze,store_name,sample_sales_silver,sample_sales_silver,store_name,Null Handling,Replace null values with empty string
+sample_sales_bronze,sample_sales_bronze,quantity,sample_sales_silver,sample_sales_silver,quantity,Cast,Cast to integer
+sample_sales_bronze,sample_sales_bronze,unit_price,sample_sales_silver,sample_sales_silver,unit_price,Cast,"Cast to decimal(10, 2)"
+sample_sales_bronze,sample_sales_bronze,total_amount,sample_sales_silver,sample_sales_silver,total_amount,Cast,"Cast to decimal(10, 2)"
+sample_sales_bronze,sample_sales_bronze,_load_timestamp,sample_sales_silver,sample_sales_silver,_load_timestamp,Cast,Cast to timestamp
+sample_sales_bronze,sample_sales_bronze,_source_file,sample_sales_silver,sample_sales_silver,_source_file,Null Handling,Replace null values with empty string

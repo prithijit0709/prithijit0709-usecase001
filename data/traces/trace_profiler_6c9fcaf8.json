@@ -1,0 +1,20 @@
+[
+  {
+    "agent": "profiler",
+    "run_id": "6c9fcaf8-755b-4968-89cf-c79b5c09bf48",
+    "started_at": "2026-08-06T11:45:12.916978+00:00",
+    "input": {
+      "file_paths": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\landing\\sample_sales.csv"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "profile_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\profiles\\profile_combined_20260806_171621.json"
+    },
+    "duration_seconds": 68.989,
+    "status": "success"
+  }
+]

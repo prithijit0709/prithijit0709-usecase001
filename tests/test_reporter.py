@@ -9,7 +9,6 @@ from unittest.mock import patch, MagicMock
 
 from agents.reporter import (
     generate_chart_from_spec,
-    generate_key_metrics,
     _make_reporter_tools,
     _extract_analysis,
     generate_report,
@@ -50,6 +49,15 @@ def _mock_reporter_agent(gold_parquet_path: str, analysis: dict = ANALYSIS_JSON)
     return fake_create_agent
 
 
+def _mock_reporter_llm(table_name: str, analysis: dict = ANALYSIS_JSON):
+    llm = MagicMock()
+    llm.invoke.side_effect = [
+        MagicMock(content=json.dumps({"sql_query": f"SELECT * FROM {table_name}"})),
+        MagicMock(content=json.dumps(analysis)),
+    ]
+    return llm
+
+
 # ---------------------------------------------------------------------------
 # generate_chart_from_spec
 # ---------------------------------------------------------------------------
@@ -83,20 +91,6 @@ class TestGenerateChartFromSpec:
 
 
 # ---------------------------------------------------------------------------
-# generate_key_metrics
-# ---------------------------------------------------------------------------
-class TestGenerateKeyMetrics:
-    def test_returns_expected_keys(self):
-        df = pd.DataFrame({"a": [1, None], "b": ["x", "y"]})
-        metrics = generate_key_metrics(df)
-        assert "total_rows" in metrics
-        assert "total_columns" in metrics
-        assert "missing_values" in metrics
-        assert metrics["total_rows"] == 2
-        assert metrics["missing_values"] == 1
-
-
-# ---------------------------------------------------------------------------
 # _make_reporter_tools
 # ---------------------------------------------------------------------------
 class TestMakeReporterTools:
@@ -105,7 +99,7 @@ class TestMakeReporterTools:
         p = tmp_path / "gold_sales.parquet"
         df.to_parquet(str(p), index=False)
 
-        load_tool, _, scratchpad, conn = _make_reporter_tools([str(p)], "run-r1")
+        _, load_tool, _, scratchpad, conn = _make_reporter_tools([str(p)], "run-r1")
         try:
             result = load_tool.invoke({})
             catalog = json.loads(result)
@@ -120,7 +114,7 @@ class TestMakeReporterTools:
         p = tmp_path / "gold_data.parquet"
         df.to_parquet(str(p), index=False)
 
-        load_tool, query_tool, scratchpad, conn = _make_reporter_tools([str(p)], "run-r2")
+        _, load_tool, query_tool, scratchpad, conn = _make_reporter_tools([str(p)], "run-r2")
         try:
             load_tool.invoke({})
             query_tool.invoke({"sql_query": "SELECT * FROM gold_data"})
@@ -135,7 +129,7 @@ class TestMakeReporterTools:
         p = tmp_path / "gold_x.parquet"
         df.to_parquet(str(p), index=False)
 
-        load_tool, query_tool, scratchpad, conn = _make_reporter_tools([str(p)], "run-r3")
+        _, load_tool, query_tool, scratchpad, conn = _make_reporter_tools([str(p)], "run-r3")
         try:
             load_tool.invoke({})
             result = query_tool.invoke({"sql_query": "SELECT * FROM nonexistent_table"})
@@ -172,13 +166,125 @@ class TestExtractAnalysis:
 # generate_report
 # ---------------------------------------------------------------------------
 class TestGenerateReport:
+    def test_entity_id_query_result_is_enriched_with_human_readable_name(self, tmp_path):
+        sales = pd.DataFrame({
+            "store_id": ["S001", "S003"],
+            "store_name": ["Downtown", "Suburb"],
+            "total_amount": [1000.0, 500.0],
+        })
+        gold_path = tmp_path / "sales.parquet"
+        sales.to_parquet(gold_path, index=False)
+        llm = MagicMock()
+        llm.invoke.side_effect = [
+            MagicMock(content=json.dumps({
+                "sql_query": (
+                    'SELECT "store_id", SUM("total_amount") AS "total_sales_amount" '
+                    'FROM "sales" GROUP BY "store_id" ORDER BY "total_sales_amount" LIMIT 1'
+                )
+            })),
+            MagicMock(content=json.dumps({
+                "direct_answer": {
+                    "answer": "Suburb (S003) had the lowest total sales amount of 500.",
+                    "approach": "Grouped sales by store.",
+                },
+                "charts": [],
+                "detailed_analysis": "Suburb is the lowest-sales store.",
+            })),
+        ]
+
+        with patch("agents.reporter._make_llm", return_value=llm), patch(
+            "agents.reporter.REPORTS_DIR", tmp_path
+        ), patch("agents.reporter.store_document"):
+            generate_report(
+                [str(gold_path)],
+                "Which store had the lowest total sales amount?",
+                "run-store-name",
+                task_description="Generate report.",
+            )
+
+        analysis_prompt = llm.invoke.call_args_list[1].args[0]
+        assert '"store_name": "Suburb"' in analysis_prompt
+        assert "Prefer human-readable name columns" in analysis_prompt
+
+    def test_malformed_analysis_uses_data_driven_fallback(self, tmp_path):
+        df = pd.DataFrame({"region": ["East", "West"], "revenue": [300, 400]})
+        gold_path = tmp_path / "gold_output.parquet"
+        df.to_parquet(str(gold_path), index=False)
+        llm = MagicMock()
+        llm.invoke.side_effect = [
+            MagicMock(content=json.dumps({"sql_query": "SELECT * FROM gold_output"})),
+            MagicMock(content="I could not return valid JSON."),
+        ]
+
+        with patch("agents.reporter._make_llm", return_value=llm), patch(
+            "agents.reporter.REPORTS_DIR", tmp_path
+        ), patch("agents.reporter.store_document"):
+            path = generate_report(
+                [str(gold_path)],
+                "Analyse revenue by region",
+                "run-fallback",
+                task_description="Generate report.",
+            )
+
+        content = Path(path).read_text(encoding="utf-8")
+        assert "Analysis could not be structured" not in content
+        assert "2 records" in content
+        assert "revenue" in content
+        assert "Detailed Analysis" in content
+        assert "chart_1" in content
+
+    def test_accepts_string_direct_answer(self, tmp_path):
+        df = pd.DataFrame({"region": ["West"], "revenue": [400]})
+        gold_path = tmp_path / "gold_output.parquet"
+        df.to_parquet(str(gold_path), index=False)
+        analysis = {
+            "direct_answer": "West generated $400 in revenue.",
+            "charts": [],
+            "detailed_analysis": "West is the only region in the result.",
+        }
+
+        with patch(
+            "agents.reporter._make_llm",
+            return_value=_mock_reporter_llm("gold_output", analysis),
+        ), patch("agents.reporter.REPORTS_DIR", tmp_path), patch(
+            "agents.reporter.store_document"
+        ):
+            path = generate_report(
+                [str(gold_path)],
+                "Analyse revenue by region",
+                "run-string-answer",
+                task_description="Generate report.",
+            )
+
+        assert "West generated $400 in revenue." in Path(path).read_text(encoding="utf-8")
+
+    def test_reporter_uses_two_direct_llm_calls(self, tmp_path):
+        df = pd.DataFrame({"region": ["East", "West"], "revenue": [300, 400]})
+        gold_path = tmp_path / "gold_output.parquet"
+        df.to_parquet(str(gold_path), index=False)
+        llm = MagicMock()
+        llm.invoke.side_effect = [
+            MagicMock(content=json.dumps({"sql_query": "SELECT * FROM gold_output"})),
+            MagicMock(content=json.dumps(ANALYSIS_JSON)),
+        ]
+
+        with patch("agents.reporter.create_agent", side_effect=AssertionError("agent created")), \
+             patch("agents.reporter._make_llm", return_value=llm), \
+             patch("agents.reporter.REPORTS_DIR", tmp_path), \
+             patch("agents.reporter.store_document"):
+            path = generate_report(
+                [str(gold_path)], "Analyse revenue by region", "run-direct", "Generate report"
+            )
+
+        assert llm.invoke.call_count == 2
+        assert Path(path).exists()
+
     def test_saves_html_and_returns_path(self, tmp_path):
         df = pd.DataFrame({"region": ["East", "West"], "revenue": [300, 400]})
         gold_path = tmp_path / "gold_output.parquet"
         df.to_parquet(str(gold_path), index=False)
 
-        with patch("agents.reporter.create_agent",
-                   side_effect=_mock_reporter_agent(str(gold_path))), \
+        with patch("agents.reporter._make_llm", return_value=_mock_reporter_llm("gold_output")), \
              patch("agents.reporter.REPORTS_DIR", tmp_path), \
              patch("agents.reporter.store_document"):
             path = generate_report(
@@ -191,22 +297,13 @@ class TestGenerateReport:
         assert "Executive Report" in content
         assert "Analyse revenue by region" in content
 
-    def test_uses_reporter_agent_prompt(self, tmp_path):
+    def test_analysis_prompt_contains_query_results(self, tmp_path):
         df = pd.DataFrame({"region": ["East"], "revenue": [300]})
         gold_path = tmp_path / "gold_p.parquet"
         df.to_parquet(str(gold_path), index=False)
 
-        captured = {}
-
-        def fake_create_agent(llm, tools, **kwargs):
-            captured["system_prompt"] = kwargs.get("system_prompt", "")
-            mock_agent = MagicMock()
-            mock_agent.invoke.return_value = {
-                "messages": [MagicMock(content=json.dumps(ANALYSIS_JSON))]
-            }
-            return mock_agent
-
-        with patch("agents.reporter.create_agent", side_effect=fake_create_agent), \
+        llm = _mock_reporter_llm("gold_p")
+        with patch("agents.reporter._make_llm", return_value=llm), \
              patch("agents.reporter.REPORTS_DIR", tmp_path), \
              patch("agents.reporter.store_document"):
             generate_report(
@@ -214,7 +311,7 @@ class TestGenerateReport:
                 task_description="Generate report.",
             )
 
-        assert "load_gold_data_tool" in captured["system_prompt"]
+        assert "East" in llm.invoke.call_args_list[1].args[0]
 
     def test_returns_empty_string_for_no_files(self, tmp_path):
         with patch("agents.reporter.REPORTS_DIR", tmp_path), \

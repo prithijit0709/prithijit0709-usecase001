@@ -19,12 +19,15 @@ CHROMA_DIR = BASE_DIR / ".chroma"
 
 # LLM Configuration
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
 EMBEDDING_MODEL = "models/text-embedding-004"
 
 # Groq Configuration (preferred - higher free tier limits)
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-GROQ_MODEL = "llama-3.3-70b-versatile"  # Currently supported Groq model
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant").strip() or "llama-3.1-8b-instant"
+GROQ_MIN_REQUEST_INTERVAL_SECONDS = float(os.getenv("GROQ_MIN_REQUEST_INTERVAL_SECONDS", "65"))
+GROQ_MAX_RETRIES = int(os.getenv("GROQ_MAX_RETRIES", "4"))
+GROQ_MAX_OUTPUT_TOKENS = int(os.getenv("GROQ_MAX_OUTPUT_TOKENS", "1200"))
 
 # Use Groq if available, else fall back to Gemini
 _env_llm = os.getenv("LLM_PROVIDER", "").strip().lower()

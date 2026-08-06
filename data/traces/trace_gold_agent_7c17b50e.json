@@ -1,0 +1,78 @@
+[
+  {
+    "agent": "gold_agent",
+    "run_id": "7c17b50e-0cbd-4153-a95f-5aca297db46b",
+    "started_at": "2026-08-06T11:57:09.911362+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\silver_layer\\sample_sales_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_gold_7c17b50e.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": []
+    },
+    "duration_seconds": 0.016,
+    "status": "success"
+  },
+  {
+    "agent": "gold_agent",
+    "run_id": "7c17b50e-0cbd-4153-a95f-5aca297db46b",
+    "started_at": "2026-08-06T12:03:26.478313+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\silver_layer\\sample_sales_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_gold_7c17b50e.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": []
+    },
+    "duration_seconds": 0.016,
+    "status": "success"
+  },
+  {
+    "agent": "gold_agent",
+    "run_id": "7c17b50e-0cbd-4153-a95f-5aca297db46b",
+    "started_at": "2026-08-06T12:03:36.088642+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\silver_layer\\sample_sales_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_gold_7c17b50e.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": []
+    },
+    "duration_seconds": 0.017,
+    "status": "success"
+  },
+  {
+    "agent": "gold_agent",
+    "run_id": "7c17b50e-0cbd-4153-a95f-5aca297db46b",
+    "started_at": "2026-08-06T12:04:08.061356+00:00",
+    "input": {
+      "input_files": [
+        "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\silver_layer\\sample_sales_silver.parquet"
+      ],
+      "sttm_path": "C:\\Users\\pusmajumdar\\Downloads\\pusmajumdar-UseCase-001\\data\\sttm\\sttm_gold_7c17b50e.csv"
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "output_paths": []
+    },
+    "duration_seconds": 0.011,
+    "status": "success"
+  }
+]

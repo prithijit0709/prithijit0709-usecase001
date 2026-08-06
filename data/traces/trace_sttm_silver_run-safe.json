@@ -1,0 +1,78 @@
+[
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-safe",
+    "started_at": "2026-08-06T12:19:19.737636+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-48\\test_malformed_llm_response_fa0\\events_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-48\\test_malformed_llm_response_fa0\\sttm_silver_run-safe.csv",
+      "row_count": 4
+    },
+    "duration_seconds": 0.012,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-safe",
+    "started_at": "2026-08-06T12:19:58.611590+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-49\\test_malformed_llm_response_fa0\\events_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-49\\test_malformed_llm_response_fa0\\sttm_silver_run-safe.csv",
+      "row_count": 4
+    },
+    "duration_seconds": 0.012,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-safe",
+    "started_at": "2026-08-06T12:21:23.365715+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_malformed_llm_response_fa0\\events_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-51\\test_malformed_llm_response_fa0\\sttm_silver_run-safe.csv",
+      "row_count": 4
+    },
+    "duration_seconds": 0.011,
+    "status": "success"
+  },
+  {
+    "agent": "sttm_silver",
+    "run_id": "run-safe",
+    "started_at": "2026-08-06T12:21:57.047912+00:00",
+    "input": {
+      "bronze_paths": [
+        "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_malformed_llm_response_fa0\\events_bronze.parquet"
+      ]
+    },
+    "plan": "",
+    "tool_calls": [],
+    "reasoning_steps": [],
+    "output": {
+      "sttm_path": "C:\\Users\\pusmajumdar\\AppData\\Local\\Temp\\pytest-of-pusmajumdar\\pytest-52\\test_malformed_llm_response_fa0\\sttm_silver_run-safe.csv",
+      "row_count": 4
+    },
+    "duration_seconds": 0.011,
+    "status": "success"
+  }
+]

@@ -1,0 +1,10 @@
+source_schema,source_table,source_column,target_schema,target_table,target_column,transformation_type,transformation_logic
+public,sample_sales,sale_date,public,sample_sales_bronze,sale_date,copy,none
+public,sample_sales,product_id,public,sample_sales_bronze,product_id,copy,none
+public,sample_sales,product_name,public,sample_sales_bronze,product_name,copy,none
+public,sample_sales,category,public,sample_sales_bronze,category,copy,none
+public,sample_sales,store_id,public,sample_sales_bronze,store_id,copy,none
+public,sample_sales,store_name,public,sample_sales_bronze,store_name,copy,none
+public,sample_sales,quantity,public,sample_sales_bronze,quantity,copy,none
+public,sample_sales,unit_price,public,sample_sales_bronze,unit_price,copy,none
+public,sample_sales,total_amount,public,sample_sales_bronze,total_amount,copy,none

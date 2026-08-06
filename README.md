@@ -2,7 +2,7 @@
 
 > **Intent-Driven Agentic Data Engineering for Retail Sales Analytics**
 >
-> Upload messy raw CSV files, ask a business question in plain English, and receive a structured executive report — powered by autonomous AI agents working through a Bronze → Silver → Gold Medallion architecture.
+> Upload messy raw CSV files, ask a business question in plain English, and receive a structured executive report through a quota-aware Bronze → Silver → Gold Medallion architecture.
 
 ---
 
@@ -26,7 +26,7 @@
 
 ## Overview
 
-Traditional data engineering requires a data engineer to manually inspect raw files, write transformation rules, apply cleansing logic, build aggregation queries, and produce reports. This pipeline automates that entire workflow using autonomous AI agents.
+Traditional data engineering requires a data engineer to manually inspect raw files, write transformation rules, apply cleansing logic, build aggregation queries, and produce reports. This pipeline combines focused LLM decisions with deterministic Python orchestration and transformations.
 
 **What you do:**
 1. Upload raw CSV files via the Streamlit UI
@@ -48,7 +48,7 @@ Traditional data engineering requires a data engineer to manually inspect raw fi
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌───────────────────────────────────────────┐     ┌──────────────┐
 │             │     │                  │     │                  AGENTS                   │     │              │
-│  Streamlit  │────▶│   Supervisor     │────▶│  Profiler → STTM → Bronze → Silver →     │────▶│   Storage    │
+│  Streamlit  │────▶│  Deterministic   │────▶│  Profiler → STTM → Bronze → Silver →     │────▶│   Storage    │
 │     UI      │     │  Orchestrator    │     │  Gold → Reporter                          │     │   & Output   │
 │             │◀────│                  │◀────│                                           │◀────│              │
 └─────────────┘     └──────────────────┘     └───────────────────────────────────────────┘     └──────────────┘
@@ -84,21 +84,18 @@ Raw CSV  ──▶  Bronze  ──▶  Silver  ──▶  Gold  ──▶  Repor
 | **Gold** | Silver Parquet → analytics-ready Parquet. Multi-source joins, aggregations (sum/avg/count/max/min), `pk_gold_id` surrogate key. One file per Gold target table. |
 | **Report** | Gold Parquet → HTML. DuckDB runs SQL, Plotly renders charts, structured executive summary answers the business question. |
 
-### What Makes This Agentic
+### Quota-Aware Execution
 
-Every specialist agent follows the same autonomous pattern:
+The four pipeline phases use a fixed sequence, so an LLM is not asked to rediscover the workflow or decide whether required tools should run. A complete run makes six focused model requests:
 
-```
-THINK → INSPECT → PLAN → ACT → VERIFY
-```
+1. Profiler semantic analysis
+2. Bronze STTM generation
+3. Silver STTM cleansing recommendations
+4. Gold STTM generation
+5. Reporter SQL generation
+6. Reporter analysis generation
 
-1. **THINK** — reads the goal from the Supervisor and understands the context
-2. **INSPECT** — calls its inspect tool to preview inputs before touching any data
-3. **PLAN** — states an explicit plan based on what it observed
-4. **ACT** — calls its execution tool to process data
-5. **VERIFY** — confirms outputs and reports back to the Supervisor
-
-The LLM decides **when** to call tools. Python executes the actual data work. This separation gives you AI intelligence with deterministic, reliable data processing.
+Silver STTM uses one Groq request, then validates and merges recommendations into complete type-safe local mappings. If Gold STTM generation returns malformed or empty JSON, the generator falls back to complete passthrough mappings for the approved Silver columns. All Bronze, Silver, and Gold transformations run entirely in Python. Groq requests share a process-wide rate limiter and are spaced by `GROQ_MIN_REQUEST_INTERVAL_SECONDS` to remain below the model's token-per-minute quota.
 
 ---
 
@@ -107,10 +104,11 @@ The LLM decides **when** to call tools. Python executes the actual data work. Th
 ```
 medallion-pipeline/
 │
-├── streamlit_app.py              # Streamlit UI — entry point for users
+├── app/
+│   └── streamlit_app.py          # Streamlit UI — entry point for users
 │
 ├── agents/
-│   ├── orchestrator.py           # Supervisor agent + phase management
+│   ├── orchestrator.py           # Deterministic phase management
 │   ├── profiler.py               # Data Profiler agent
 │   ├── sttm_generator.py         # Unified STTM agent (Bronze/Silver/Gold)
 │   ├── bronze_agent.py           # Bronze layer ingestion agent
@@ -120,6 +118,7 @@ medallion-pipeline/
 │
 ├── core/
 │   ├── config.py                 # Paths, API keys, LLM provider config
+│   ├── llm.py                    # Shared bounded LLM factory and rate limiter
 │   ├── audit.py                  # AuditLogger — action event logging
 │   ├── observability.py          # AgentTrace — full reasoning trace
 │   └── memory.py                 # Document store for agent context
@@ -142,9 +141,9 @@ medallion-pipeline/
 
 ## Agents
 
-### Supervisor Orchestrator — `orchestrator.py`
+### Phase Orchestrator — `orchestrator.py`
 
-The pipeline coordinator. Not a simple script — an autonomous LLM agent that receives a phase goal, plans which specialist agents to call, dispatches them with rich goal descriptions, and verifies outputs.
+The pipeline coordinator calls each required specialist in a fixed order, validates produced artifacts, and returns the updated pipeline state. This prevents optional or duplicated agent calls and does not consume model quota for sequencing.
 
 **Entry points (called by Streamlit UI):**
 ```python
@@ -154,7 +153,7 @@ run_silver_to_gold_sttm(state) -> PipelineState
 run_gold_and_report(state) -> PipelineState
 ```
 
-**Key patterns used:** PipelineState (TypedDict), tool factories with closures, scratchpad dict for intra-phase handoffs.
+**Key patterns used:** `PipelineState` (`TypedDict`), explicit phase boundaries, artifact validation, and human approval gates.
 
 ---
 
@@ -251,7 +250,7 @@ Answers the business question by querying Gold tables with SQL and producing an 
 **Tools:**
 - `inspect_gold_tables_tool` — previews Gold table schemas and sample rows (no DuckDB)
 - `load_gold_data_tool` — registers Gold Parquet files as DuckDB in-memory tables
-- `execute_query_tool(sql_query)` — runs agent-written SQL, returns JSON rows
+- `execute_query_tool(sql_query)` — runs agent-written SQL and enriches returned entity IDs with available human-readable names
 
 **Entry point:**
 ```python
@@ -316,13 +315,13 @@ Phase 2 runs → Human approves Silver STTM → Phase 3 runs
 Phase 3 runs → Human approves Gold STTM   → Phase 4 runs
 ```
 
-### ReAct Agent Loop
+### Bounded LLM Calls
 
-Every agent follows Think → Inspect → Plan → Act → Verify. The inspect tool runs first (lightweight, no side effects), the agent forms a plan, then the execution tool runs. The LLM never executes blindly.
+Each model request has one defined output contract. STTM calls return mapping rows, while Reporter calls separately return SQL and structured analysis. Required artifacts are validated before the next phase can continue.
 
 ### Separation of Intelligence and Execution
 
-The LLM decides **when** to call tools and **what goal to pursue**. Python tools do the actual data work (pandas, DuckDB, Plotly). This gives AI-level adaptability with deterministic, reliable data processing.
+The LLM supplies semantic interpretation, mapping recommendations, SQL, and narrative analysis. Python controls sequencing and performs data work with pandas, DuckDB, and Plotly.
 
 ---
 
@@ -330,8 +329,8 @@ The LLM decides **when** to call tools and **what goal to pursue**. Python tools
 
 | Category | Library | Used for |
 |----------|---------|----------|
-| **Orchestration** | `langchain ≥0.2` | `create_agent`, `@tool`, ReAct loop, message types |
-| **LLM (Groq)** | `langchain-groq` | `ChatGroq` — llama3-8b-8192, mixtral-8x7b |
+| **Orchestration** | `langchain ≥0.2` | Focused prompts, tools, and message types |
+| **LLM (Groq)** | `langchain-groq` | `ChatGroq` — Llama 3.1 8B Instant |
 | **LLM (Google)** | `langchain-google-genai` | `ChatGoogleGenerativeAI` — Gemini Pro |
 | **UI** | `streamlit ≥1.32` | File upload, STTM approval, report rendering |
 | **Data** | `pandas` | CSV/Parquet read-write, all transformations |
@@ -377,15 +376,18 @@ Create a `.env` file in the project root:
 
 ```env
 # Choose one LLM provider
-LLM_PROVIDER=groq           # or: google
+LLM_PROVIDER=groq           # or: gemini
 
 # Groq API key (if using Groq)
 GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=llama3-8b-8192   # or: mixtral-8x7b-32768
+GROQ_MODEL=llama-3.1-8b-instant
+GROQ_MIN_REQUEST_INTERVAL_SECONDS=65
+GROQ_MAX_RETRIES=4
+GROQ_MAX_OUTPUT_TOKENS=1200
 
 # Google API key (if using Gemini)
 GOOGLE_API_KEY=your_google_api_key_here
-GEMINI_MODEL=gemini-pro
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
 Get your Groq API key at [console.groq.com](https://console.groq.com)
@@ -405,7 +407,7 @@ mkdir -p data/bronze data/silver data/gold data/sttm data/profiles data/reports 
 ### Start the Streamlit app
 
 ```bash
-streamlit run streamlit_app.py
+streamlit run app/streamlit_app.py
 ```
 
 The app opens at `http://localhost:8501`
@@ -440,13 +442,13 @@ All configuration lives in `core/config.py`:
 
 ```python
 # LLM Provider — reads from .env
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "")
 
 # API keys
 GROQ_API_KEY  = os.getenv("GROQ_API_KEY")
-GROQ_MODEL    = os.getenv("GROQ_MODEL", "llama3-8b-8192")
+GROQ_MODEL    = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-GEMINI_MODEL  = os.getenv("GEMINI_MODEL", "gemini-pro")
+GEMINI_MODEL  = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 # Data directories
 BASE_DIR      = Path(__file__).parent.parent / "data"
@@ -530,9 +532,9 @@ The `run_id` and `business_intent` travel through the entire pipeline. Every fil
 
 The STTM is the transformation recipe. If it is wrong, all downstream data is wrong. Phases create human review checkpoints before each layer executes — preventing errors from propagating silently through the pipeline.
 
-**Q: Why does every agent have an inspect tool AND an execution tool?**
+**Q: Why are LLM calls paced 65 seconds apart?**
 
-The inspect tool is lightweight — it reads metadata without transforming any data. This lets the agent understand what it is working with and form a plan before committing to execution. It is the difference between a scripted agent and an autonomous one.
+`llama-3.1-8b-instant` has a per-minute token quota. One shared rate limiter spaces requests across agents, preventing otherwise independent calls from creating a burst. Adjust the interval only when your Groq account limits support it.
 
 **Q: What is the scratchpad? Is it a special library?**
 
@@ -544,7 +546,7 @@ LLMs are unreliable at reproducing exact file system paths and UUIDs — they pa
 
 **Q: Can I use a different LLM provider?**
 
-Yes. Set `LLM_PROVIDER=groq` or `LLM_PROVIDER=google` in your `.env` file. The `_make_llm()` factory in each agent reads this setting and returns the appropriate LangChain LLM object.
+Yes. Set `LLM_PROVIDER=groq` or `LLM_PROVIDER=google` in your `.env` file. The shared factory in `core/llm.py` returns the configured LangChain model and applies Groq pacing and output limits.
 
 **Q: What happens if a phase fails partway through?**
 
